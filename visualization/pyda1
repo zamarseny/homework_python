@@ -1,0 +1,515 @@
+24.08.2018
+адель [9:06 PM]
+привет!
+
+в понедельник начинается новый блок про Python.
+
+Перед началом всем, кто еще не сделал этого, нужно:
+1. Скачать и установить питон 3.6 в дистрибутиве Anaconda: https://www.anaconda.com/download.
+2. Скачать и установить Git: https://git-scm.com/download.
+3. Зарегистрироваться на github.com.
+Anaconda
+Downloads - Anaconda
+Download Anaconda Distribution Version | Release Date: Download For: High-Performance Distribution Easily install 1,000+ data science packages Package Management Manage packages, dependencies and environments with conda Portal to Data Science Uncover insights in your data and create interactive visualizations Download for Your Preferred Platform Open   Windows Anaconda For Windows Installer Python 3.6 version * …Read more →
+https://www.anaconda.com/wp-content/uploads/2018/05/Anaconda-Twitter-Card-01.jpg
+
+27.08.2018
+Alex [2:53 PM]
+Кто-то в курсе, анаконда с питоном 3.4.1. подойдет? Или непременно надо обновить?
+
+Victor Pimshin [4:11 PM]
+добрый день, какой скрипт с github'a запустить, чтобы проверить что питон встал нормально? спсб
+
+адель [4:59 PM]
+ловите ссылку на гитхаб, которая вам сегодня понадобится:
+https://github.com/netology-code/data-scientist4/tree/master/2.%20Python%20for%20analytics/2.1%20Python%20%D0%B8%20Git
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+
+Kira [5:04 PM]
+joined pyda-1-вопросы by invitation from адель.
+
+адель [5:07 PM]
+Кира будет помогать нам с учебным процессом — модерировать занятия и, когда начнется офлайновая часть, собирать ваши личные дела!
+
+Kira [5:20 PM]
+всем привет
+
+Настя Дорожкина [5:38 PM]
+mbadin
+@адель
+есть вопрос.. как понял через месяц начинается математика,
+можете написать какие разделы матана и дискретки надо повторить, перед тем как приступить к курсам?
+желательно максимально кратко и по делу, а то вспоминать все статы, ангем и матан очень затратно по времени
+Thread in #флуд_тематическийAug 27th
+
+Ivan_K [5:42 PM]
+@Настя Дорожкина Здравствуйте) а когда будет ссылка на трансляцию сегодняшнего занятия?
+
+kbashevoy [9:04 PM]
+joined pyda-1-вопросы by invitation from адель.
+
+AlexM [10:41 PM]
+А процедура сдачи дз не меняется? Так же через интерфейс личного кабинета?  Или нужно сообщать дополнительно?
+
+30.08.2018
+Kira [5:21 PM]
+всем привет. пытаюсь постичь программу одновременно с вами) задала бы по нынешнему дз несколько вопросов, если будет доброволец, готовый немного помочь) поскольку вопросы далеки от сверхсложных, лучше в личку. буду благодарна)
+
+31.08.2018
+Kira [11:21 AM]
+сегодняшнее занятие: https://github.com/netology-code/data-scientist4/blob/master/2.%20Python%20for%20analytics/2.2%20Python%20-%20Lists%20and%20dicts.ipynb
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+ссылка на трансляцию - на почте
+
+kbashevoy [7:16 PM]
+демо-пример
+Binary 
+demos.ipynb
+Binary
+
+
+RuRM [7:29 PM]
+months[2:-7]
+
+Pavel Pronchenko [7:34 PM]
+items[-1][1][1][0]
+
+RuRM [7:54 PM]
+lst2=[]
+for i in range(len(sys_stdin)):
+   if sys_stdin[i]%2==0:
+       lst2.append(sys_stdin[i])
+min(lst2)
+
+Pavel Pronchenko [7:55 PM]
+a = []
+for i in sys_stdin:
+   if i%2 == 0:
+       a.append(i)
+print(min(a))
+[min(i) for i in sys_stdin if i%2==0]
+почему то не работает (
+лист компрехеншн
+
+RuRM [8:39 PM]
+sum([line[2] for line in if '2018' in line[1] api_response])
+почему то ошибку выдает что то с синтаксисом
+это проверка на первое условие
+
+Pavel Pronchenko [8:56 PM]
+stats = {}
+
+for line in big_data_list:
+   stats.setdefault(line[1], 0)
+   stats[line[1]] += 1
+
+stats
+
+AlexM [10:21 PM]
+По поводу ДЗ:
+1 задание: представленный список записан синтактически неверно.
+-------------------------------------
+['visit1': ['Москва', 'Россия']],
+            ^
+SyntaxError: invalid syntax
+-------------------------------------
+Привести его в порядок можно разными способами. Как правильно этот список записать?
+
+01.09.2018
+AlexM [1:01 AM]
+последнее не сделанное задание осталось
+
+Vladislav Korotych [6:48 PM]
+пытаюсь загрузить данные в таблицу через \copy, а мне выдает ошибку ERROR:  invalid input syntax for type numeric: "646456,43"
+подозреваю, что он ожидает точку в качестве десятичного разделителя
+как его заставить обрабатывать запятую?
+так, это в sql надо наверно)
+
+Ivan_K [6:50 PM]
+Здесь тоже норм)
+
+03.09.2018
+Kira [10:55 AM]
+доброе утро. сегодняшнее занятие: https://github.com/netology-code/data-scientist4/tree/master/2.%20Python%20for%20analytics/2.3%20Python%20-%20Functions%20and%20classes
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+ссылка на трансляцию - на почте.
+
+Kira [7:07 PM]
+сегодня понадобится csv файл, если не удастся его скачать выше - есть такой же в ваших личных кабинетах
+
+Pavel Pronchenko [7:40 PM]
+def replace_income (income):
+       if income == ">50K" or income == "<=50K":
+           if income == ">50K":
+               level = 1
+           if income == "<=50K":
+               level = 0
+           return level
+       level = 2
+       return(level)
+
+Pavel Pronchenko [8:00 PM]
+def vk_campaigns(list):
+   res = []
+   for i in ad_stats:
+       r = i.split(',')[1]
+       if r == 'vk':
+           res.append(i)
+   return res
+первая функция
+
+Pavel Pronchenko [8:06 PM]
+def sum_campaigns(l):
+   res = 0
+   for i in l:
+       first, other, last = i.split(',')
+       res = res + int(last)
+   return res
+Вторая функция
+sum_campaigns(vk_campaigns(ad_stats))
+и вызов
+
+AlexM [8:07 PM]
+def filter1(x, comp):
+   data,c, p = x.strip().split(',')
+   return c == comp
+
+def sum1(l):
+   s = 0
+   for i in l:
+       data,c, p = i.strip().split(',')
+       s+=int(p)
+   return s
+
+for i in ['vk', 'fb', 'ok']:
+   r.append([x for x in ad_stats if filter1(x, i)])
+res = list(map( lambda y: sum1(y), r ) )
+res
+
+Pavel Pronchenko [8:21 PM]
+def reports (**kwargs):
+   line = urlencode(kwargs)
+   url_line = 'https://api.service.ru/reports?'+line
+   return(url_line)
+reports(date1= '2018-01-01', date2 = '2018-01-31', accuracy = 'full', id = '4721932')
+метод и вызов
+
+AlexM [8:24 PM]
+def foo(method, **kwards):
+   return 'https://api.service.ru/'+str(method)+'?' + urlencode(kwards)
+
+foo('report', date1='01-01-2018', date2='12.12.2018', accuracy='0.65', id='45' )
+
+06.09.2018
+Aieke [11:07 AM]
+joined pyda-1-вопросы by invitation from адель.
+
+Aieke [6:02 PM]
+Доброго вечера всем ! Я по поводу ДЗ Номер1-задание 5: «5. В прошлом задании у вас скорее всего не получилось точного значения 0.5 из-за конечной точности вычисления синуса. Но почему некоторые простые операции также могут давать неточный результат? Попробуйте вывести на экран результат операции 0.1 + 0.2» - кто-нибудь знает ответ? Или какие варианты есть?
+
+Grigoz [8:01 PM]
+@адель @kbashevoy Добрый вечер, хотел узнать, что вы думаете о том, чтобы выкладывать после дедлайна домашек их решения от Константина, думаю многим было бы полезно и интересно увидеть как тот или иной алгоритм решает профессиональный программист? Просто мои решения мне кажутся не самыми оптимизированными.
+
+Ivan_K [8:04 PM]
++1 отличная идея!
+Это будет очень полезно
+
+AlexM [9:12 PM]
+Только не сразу после дедлайна, а то некоторым отправлят работы на доработку и не хотелось бы иметь соблазн подсмотреть решение. Лучше через недельки две.
+
+Ivan_K [9:13 PM]
+Мне кажется после окончания модуля можно выкладывать
+
+07.09.2018
+адель [12:09 PM]
+@Grigoz @Ivan_K
+да, было бы круто отрабатывать домашки до конца. подумаем, как лучше это организовать
+
+адель [6:39 PM]
+@here а вам пришли ссылки на трансляцию?
+
+Ivan_K [6:42 PM]
+Мне пришла
+
+адель [6:45 PM]
+отправила сейчас повторно, должна быть на почте
+
+Arseny [6:47 PM]
+мне тоже пришла в 18:42
+
+Настя Дорожкина [6:49 PM]
+пришла!
+
+AlexM [8:09 PM]
+stats, stats_p = {},{}
+call = 0;
+
+with open('logs.csv', 'r') as f:
+   for line in f:
+       line = line.strip()
+       stats[line[11:13]] = 1 if line[11:13] not in stats.keys() else int(stats[line[11:13]])+1
+       call+=1
+       # вычисления нагрузки на систему...
+for i in stats:
+   stats_p[i] = str(stats[i]*100/(call))+'%'
+   print(f' {i} - {stats_p[i]}')
+# результат
+
+stats
+
+AlexM [8:33 PM]
+https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjEnZKotqndAhWD3CwKHXtSAgMQjRx6BAgBEAU&url=https%3A%2F%2Ftproger.ru%2Ftranslations%2Fdont-comment-your-code-rewrite-it%2F&psig=AOvVaw0XdioqU1gWvZXdhZZoHfd3&ust=1536427951569721
+
+Kira [8:33 PM]
+https://tproger.ru/translations/dont-comment-your-code-rewrite-it/
+Tproger
+Не комментируйте свой код — перепишите его
+Комментирование кода — это один из аспектов, к которому я изменил своё отношение в процессе профессионального развития. Когда я был еще новичком, я
+Feb 6th, 2015
+
+Pavel Pronchenko [8:34 PM]
+KeyError                                  Traceback (most recent call last)
+<ipython-input-37-d047c4841875> in <module>()
+----> 1 stats['wednesday']
+
+KeyError: 'wednesday'
+или писать можно в лог наверное?
+
+AlexM [8:45 PM]
+def parse_p(p):
+   p = p.replace(',','.')
+   return float(p) if float(p) < 1000 else float(p)/1000
+
+
+summa = 0
+with open('real_data.txt', 'r') as f:
+   for line in f:
+       try:
+           d, user, p =  line.strip().split('\t')
+       except:
+           pass
+       summa += parse_p(p)
+print(f'{summa:.2f}')
+точно вы правы
+def parse_p(p):
+   p = p.replace(',','.')
+   return float(p) if float(p) < 1000 else float(p)/1000000
+summa = 0
+with open('real_data.txt', 'r') as f:
+   for line in f:
+       try:
+           d, user, p =  line.strip().split('\t')
+           summa += parse_p(p)
+       except:
+           pass
+
+print(f'{summa:.2f}')
+
+08.09.2018
+Arseny [2:57 PM]
+у меня застревание на начале второй домашки:
+geo_logs = [
+['visit1': ['Москва', 'Россия']],
+['visit2': ['Дели', 'Индия']],
+['visit3': ['Владимир', 'Россия']],
+['visit4': ['Лиссабон', 'Португалия']],
+['visit5': ['Париж', 'Франция']],
+['visit6': ['Лиссабон', 'Португалия']],
+['visit7': ['Тула', 'Россия']],
+['visit8': ['Тула', 'Россия']],
+['visit9': ['Курск', 'Россия']],
+['visit10': ['Архангельск', 'Россия']],
+]
+при исполнении этой команды Питон выдает: File "<ipython-input-17-aef56def5aa9>", line 2
+   ['visit1': ['Москва', 'Россия']],
+            ^
+SyntaxError: invalid syntax
+у кого такое было? Преодалели?
+
+kbashevoy [3:00 PM]
+опечатка, замените двоеточние на запятую
+
+Arseny [3:03 PM]
+спасибо! А от этого смысл не изменится? Может это было что-то типа словаря а стало списком?
+
+kbashevoy [4:59 PM]
+не должен
+
+10.09.2018
+Aleksandr Kosolapov [5:22 PM]
+@Dima Muzalevskiy  добрый день!) о чем будет лабораторная в субботу? что надо знать или повторить? Спасибо заранее.
+
+Pavel Pronchenko [7:37 PM]
+mat = np.eye(10)
+np.sum(mat)
+
+Pavel Pronchenko [7:53 PM]
+r = []
+for i in users_stats:
+   r.append(cosine(i, next_user_stats))
+r
+[0, 1, 1, 0, 0, 0] -
+этот
+
+11.09.2018
+AlexM [5:36 PM]
+Сейчас пришло письмо о переносе знаятия с пятницы на 12 (на среду). Это соответствует действительности или как в прошлый раз техническая проблемка?
+
+Victor Pimshin [7:06 PM]
+соответствует
+
+12.09.2018
+Alex [2:44 PM]
+Коллеги, вопрос по "домашке" номер 3: в задании, - "Напишите функцию, которая возвращает название валюты (поле 'Name') с максимальным значением курса с помощью сервиса https://www.cbr-xml-daily.ru/daily_json.js", - данные надо забирать используя указанный адрес, или можно просто скопировать в код? Потом, я так понимаю у меня шрифтов каких-то не хватает, может с кодировкой что, но поле - "Name" у меня выглядит так:
+
+Alex [2:44 PM]
+"AUD": {
+           "ID": "R01010",
+           "NumCode": "036",
+           "CharCode": "AUD",
+           "Nominal": 1,
+           "Name": "РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ РґРѕР»Р»Р°СЂ",
+           "Value": 49.8358,
+           "Previous": 49.6905
+       },
+       "AZN": {
+           "ID": "R01020A",
+           "NumCode": "944",
+           "CharCode": "AZN",
+           "Nominal": 1,
+           "Name": "РђР·РµСЂР±Р°Р№РґР¶Р°РЅСЃРєРёР№ РјР°РЅР°С‚",
+           "Value": 41.2463,
+           "Previous": 41.1839
+       },
+
+Kira [5:41 PM]
+ребята, доступ пришел на трансляцию?
+https://github.com/netology-code/data-scientist4/tree/master/2.%20Python%20for%20analytics/2.6%20Python%20-%20Pandas материалы
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+
+Irina Belaya [7:06 PM]
+не видно экран
+
+AlexM [7:32 PM]
+def have_mrt(row):
+   return True if ('МРТ' in row['title']) and ('24 часа' in row['text']) else False
+
+stats['mrt_24'] = stats.apply(have_mrt, axis=1)
+
+stats['mrt_24'].value_counts()
+
+MariA [8:40 PM]
+Подскажите, пожалуйста, где искать файл ratings_example?
+File b'ratings_example.txt' does not exist
+
+kbashevoy [8:40 PM]
+movies_example.txt 
+movieId title  genres
+31 Dangerous Minds (1995) Drama
+32 Twelve Monkeys (a.k.a. 12 Monkeys) (1995)  Mystery|Sci-Fi|Thriller
+31 Dangerous Minds (1995) Drama
+ratings_example.txt 
+userId movieId rating timestamp
+1  31 2.5 1260759144
+
+14.09.2018
+Aleksandr Kosolapov [6:20 PM]
+в пятой домашке для ее решения да и вообще можно такую конструкцию использовать кстати :
+df[df['country'].isin(['Latvia','Estonia','Lithuania']) & df['category'].isin([4,12,21])] , а для числовых значений чуть иначе: (df['col1'] >= 1) & (df['col1'] <= 5) (edited)
+
+16.09.2018
+Aleksandr Kosolapov [11:32 PM]
+Оказывается новый столбец(series) в датафрейм можно добавить через list compehension:
+Снимок экрана 2018-09-16 в 23.29.25.png 
+
+17.09.2018
+MariA [7:13 PM]
+Будет ли доступ к слаидам  после лекции?
+
+Dima Muzalevskiy [7:16 PM]
+https://github.com/netology-code/data-scientist4/tree/master/2.%20Python%20for%20analytics/2.8%20Python%20-%20Set%20Theory%20and%20Linear%20Algebra/Set%20Theory (edited)
+
+RuRM [7:17 PM]
+почему то выдает ошибку по ссылке
+
+Stratosferova [7:17 PM]
+битая ссылка, да
+
+Aleksandr Kosolapov [7:18 PM]
+https://github.com/netology-code/data-scientist4
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+
+RuRM [7:18 PM]
+Pasted image at 2018-09-17, 9:18 PM 
+
+
+Victor Pimshin [7:18 PM]
+https://github.com/netology-code/data-scientist4/tree/master/2.%20Python%20for%20analytics/2.8%20Python%20-%20Set%20Theory%20and%20Linear%20Algebra
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+
+RuRM [7:18 PM]
+спасибо
+
+Dima Muzalevskiy [7:39 PM]
+https://github.com/yhat/pandasql
+GitHub
+yhat/pandasql
+sqldf for pandas. Contribute to yhat/pandasql development by creating an account on GitHub.
+https://github.com/netology-code/data-scientist4/tree/master/2.%20Python%20for%20analytics/2.8%20Python%20-%20Set%20Theory%20and%20Linear%20Algebra/Linear%20Algebra
+GitHub
+netology-code/data-scientist4
+Материалы занятий профессии Data Scientist. Contribute to netology-code/data-scientist4 development by creating an account on GitHub.
+
+Nsolovyeva [7:53 PM]
+joined pyda-1-вопросы by invitation from адель.
+
+18.09.2018
+Arseny [3:29 PM]
+В 6-ой домашке первая задача: нужно составить гео-классификатор. К чему его можно прикрутить в файле keywords.csv? В этом файле нет ничего про географию. У меня он такой:
+keyword    shows
+0    вк    64292779
+1    одноклассники    63810309
+2    порно    41747114
+3    ютуб    39995567
+4    вконтакте    21014195
+
+Vladislav Korotych [3:30 PM]
+там в keyword-е встречаются географические названия
+берем keyword, дробим на слова, ищем в словах заданные географические названия
+
+Arseny [3:32 PM]
+ясно. Супер!
+
+19.09.2018
+Arseny [1:18 PM]
+кто знает как включить в jupiter notebook автоподстановку переменных, методов и т.д.? У Константина на уроках кажется было такое: начинаешь вводить и ноутбук выдает список похожих объектов
+
+Vladislav Korotych [1:22 PM]
+tab
+
+Arseny [1:22 PM]
+класс! Благодарю!
+
+Arseny [1:59 PM]
+[Решено] Владислав, еще раз, пожалуйста, выручите: в jupiter notebook должен быть простой способ как переностить длинную строку кода на несколько строчек (edited)
+поиск ничего простого не выдеает. Нужно что-то прописывать в системных файлах
+в обычном питоне нажимаешь в середине строки Enter и новую строку начинаешь с tab.  IPython этого не понимает
+например такую строку пытался безуспешно разбить
+user_mi_ma=ratings.groupby('userId').agg({'rat_date': ['min', 'max', 'count']}).reset_index()[['rat_date']].rename(columns={'min': 'mi','max': 'ma','count': 'cou'})
+Есть! Получилось. В конце разрываемой строки поставил "\". И новую начал с tab
+
+20.09.2018
+Stratosferova [7:37 PM]
+а по первой задаче в задании 6 мы игнорим, получается падежи? Москва попадет, а если в запросе есть “в Москве“? (edited)

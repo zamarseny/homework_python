@@ -1,0 +1,1622 @@
+30.07.2018
+Aleksandr Dzhumurat [5:50 PM]
+```Иван Мокров [1:41 PM]
+Руслан, Салют! Докер есть, но так ли они нужен? У меня полный нужный набор программерского софта заканчивая VS Pro. В моих экспериментах с Питоном мне понравился VS Code, а в виртуалке Докера наверняка будет Юпитер? Анаконда [относительно] гарантирует консистентность версий пакетов, это не будет противозаконно, если я вне лекций для занятий и дипломной работы буду использовать VS Code локальный? Фишка в том, что Докер не имеет доступа к GPU ни в Винде ни на Маке. (edited)```
+В курсе трубуются установленные Базы данных - такие как MongoDB и Postgres
+Если вы сможете установить их самомтоятельно - вы можете не пользоваться докер-файлами, а все вопросы решать со своими коллегами, жёсткого требования по использованию докера нет
+
+Иван Мокров [5:51 PM]
+Принял, спасибо. Обе базы умею, но если они будут изолированы в виртуалке, то пока так будет лучше (edited)
+Хотя, Монгу можно продключить на хостинговой машине через монго-агента, и соотвественно использовать GPU с хостинга. Но, это я выпендриваюсь вариантами, не обращайте внимания.
+
+Ivan_K [6:55 PM]
+joined #вопросы-sql.
+
+Ivan_K [6:57 PM]
+Я установил docker на mac, через терминал все работает.
+
+Irina Belaya [6:57 PM]
+joined #вопросы-sql along with MariA.
+
+Aleksandr Dzhumurat [8:00 PM]
+https://cloud.google.com/compute/docs/quickstart-linux
+
+Alexey Murzin [8:03 PM]
+joined #вопросы-sql.
+
+Alexey Murzin [8:16 PM]
+Вторая команда дает такой результат: docker run -it --rm --link netology-postgres:postgres postgres psql -h postgres -U postgres
+docker: Error response from daemon: Cannot link to a non running container: /netology-postgres AS /brave_torvalds/postgres.
+ERRO[0000] error waiting for container: context canceled
+
+Valeriya [8:47 PM]
+joined #вопросы-sql along with Philipp Vasilyev.
+
+Ivan_K [8:53 PM]
+У меня тоже самое.
+
+Stratosferova [8:55 PM]
+joined #вопросы-sql along with 2 others.
+
+Vladislav Korotych [8:56 PM]
+у меня на убунте не ставиться docker, а точнее, не могу снести docker.io, который там был ранее
+Errors were encountered while processing:
+docker.io
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+RuRM [8:56 PM]
+joined #вопросы-sql.
+
+Иван Мокров [8:57 PM]
+@Vladislav Korotych sudo в начале попробуй
+У меня вот под виндой проблема, буду мануал курить для начала.... :disappointed:
+
+Dmitry [8:58 PM]
+joined #вопросы-sql.
+
+Vladislav Korotych [8:58 PM]
+ясен пень, что с sudo
+docker - какая-то лютая хрень, сколько раз пытался ставить, столько и плевался
+четвертый заход блин
+убунту, винда, мак - сплошные поля граблей
+
+Aleksandr Kosolapov [9:00 PM]
+Владислав, там есть хитрости, http://qaru.site/questions/724699/how-to-remove-docker-completely-from-ubuntu-1404
+qaru.site
+docker - Как удалить докер полностью из ubuntu 14.04 - Qaru
+Я установил Docker в Ubuntu, но когда я попытался удалить Докер, все еще существует в системе. Я последовал за этим qaru.site/questions/93277/..., но не работал.
+
+Иван Мокров [9:00 PM]
+Так то да, лютая хрень это самое мягкое нематерное выражение, что наши инженеры-интеграторы на работе про него говорят. Убей процессы докера, они возможно файл держат
+
+Vladislav Korotych [9:00 PM]
+что только люди не придумают, лишь бы нормальной виртуализацие не пользоваться
+
+Иван Мокров [9:02 PM]
+"@Vladislav Korotych "Лёгкая виртуализация" должна была сделать виртуализацию легче! ))
+
+Vladislav Korotych [9:03 PM]
+F S   UID   PID  PPID  C PRI  NI ADDR SZ  WCHAN TTY          TIME CMD
+0 S     0     1     0  0  80   0 -  2076      - ?        00:00:00 init
+0 S     0     3     1  0  80   0 -  2077      - tty1     00:00:00 init
+0 S  1000     4     3  0  80   0 -  3751      - tty1     00:00:00 bash
+0 S  1000    14     4  0  80   0 -  4132      - tty1     00:00:00 ssh
+0 S     0   322     1  0  80   0 -  2077      - tty2     00:00:00 init
+0 S  1000   323   322  0  80   0 -  3778      - tty2     00:00:01 bash
+0 R  1000 21024   323  0  80   0 -  3844      - tty2     00:00:00 ps
+нет его в процессах
+
+Иван Мокров [9:04 PM]
+Ладно, с другой стороны, есть у тебя уже эта хрень работающая, зачем переустанавливать? Может она итак нормально работает и ей просто надо "виртуалку" новую скормить
+
+Vladislav Korotych [9:06 PM]
+в том-то и дело, что не работающая
+
+Иван Мокров [9:06 PM]
+Тогда ыыы...
+
+Vladislav Korotych [9:06 PM]
+там какая-то версия с репы подтянулась кривая
+vvodan@HELL:/mnt/c/Users/vvoda$ dpkg -l | grep -i docker
+rF  docker.io                        17.03.2-0ubuntu2~16.04.1                   amd64        Linux container runtime
+и как ее извести - хз
+
+Иван Мокров [9:09 PM]
+Возможно незаводима, поскольку как отдельный компонент чем-то еще используется, без поднимания Докера целиком.
+
+Vladislav Korotych [9:10 PM]
+Removing docker.io (17.03.2-0ubuntu2~16.04.1) ...
+invoke-rc.d: could not determine current runlevel
+* Stopping Docker: docker
+No process in pidfile '/var/run/docker-ssd.pid' found running; none killed.
+invoke-rc.d: initscript docker, action "stop" failed.
+dpkg: error processing package docker.io (--purge):
+subprocess installed pre-removal script returned error exit status 1
+dpkg: error while cleaning up:
+subprocess installed post-installation script returned error exit status 1
+Errors were encountered while processing:
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+Иван Мокров [9:11 PM]
+Жесть какая-то
+
+Vladislav Korotych [9:11 PM]
+в общем проще виртуалок наделать
+
+Aleksandr Dzhumurat [9:17 PM]
+1) Кроме трейсов ошибок прикладывайте, пожалуйста, строки, которые их вызвали
+2) Иcпольуйте форматирование слака, например
+```пример какого-то кода```
+так сообщения будут понятнее
+
+RuRM [9:26 PM]
+у меня linuxMint. докер встал, но как то криво. На команду docker run hello-world выдает:
+docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/create: dial unix /var/run/docker.sock: connect: permission denied.
+See 'docker run --help'.
+
+Vladislav Korotych [9:31 PM]
+поставил docker-ce под убунту 16, при попытке запустить хелло ворд выдает:
+
+Vladislav Korotych [9:31 PM]
+Untitled 
+vvodan@HELL:~$ sudo docker run hello-world
+docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+See 'docker run --help'.
+
+Pavel Pronchenko [9:43 PM]
+joined #вопросы-sql.
+
+Aleksandr Dzhumurat [9:50 PM]
+Хочу сказать, что разбираться с Докером не обязательно - курс у нас про SQL, ромашки на Докер не завязаны. Если совсем не получается, установите Postgres  любым удобным способом. Но Docker это круто) например, у @Ivan_K всё уже получилось!
+
+Иван Мокров [10:07 PM]
+У меня нормально работающий Докер под виндой, нормально запускает виртуалки из репозитория. У меня один вопрос -- ссылка на GIT что с ней делать. Я тупой, умею клонировать и подключиться к репозиториям GIT как разработчик. Как мне эту ссылку превратить в локальную фигню, которую можно стартануть в Докере? (edited)
+
+Иван Мокров [10:14 PM]
+Вот скачал я репозиторий в виде файла ZIP дальше что делать?
+
+Vladislav Korotych [10:16 PM]
+самое забавное, что под виндой докер работает через hyper-v)
+
+Иван Мокров [10:17 PM]
+Так то да, но ущербно работает, доступа к PCI шине нет, GPU не доступен. На Маке тоже. Есть сборка Докера под Линукс только, которая умеет CUDA (edited)
+
+Vladislav Korotych [10:18 PM]
+hyper-v вроде умеет кудой пользоваться
+
+Иван Мокров [10:19 PM]
+Гипервизор умеет, а Докер под ним не умеет
+
+Vladislav Korotych [10:19 PM]
+допилят когда-нибудь
+
+Иван Мокров [10:20 PM]
+Когда-нибудь... Как мне стартануть скачанную ссылку виртуалки под своим Докером? Я криворукий, никогда с локального диска не пробовал
+
+Grigoz [10:52 PM]
+joined #вопросы-sql.
+
+Grigoz [10:52 PM]
+Untitled 
+docker: Error response from daemon: Cannot link to a non running container: /netology-postgres AS /reverent_swartz/postgres.
+выдает когда получаем доступ к Postgres CLI внутри контейнера
+
+Sladkoejka [11:10 PM]
+joined #вопросы-sql.
+
+Sladkoejka [11:14 PM]
+Столкнулся с проблемой что не получалось запустить docker.  Все говорят скачайте ну и сразу начинайте вводить команды. А куда!!!??? куда вводить!?  командная строка не понимает, в самом докере намека на командную строку нет. Короче полазил, поглядел. Нужно открыть терминал который встроен в windows.  Просто в поиске приложений ввести poweshell и открыть, и можно работать  все команды выполняются.
+
+31.07.2018
+RuRM [7:32 AM]
+доброе утро.
+во время вчерашней лекции в онлан-чат скидывались ссылки и прочая полезная инф-а.
+так вот, как теперь мне получить к ней доступ? ну например чтобы проверить всели у меня работает с докером или построить таблицу БД.
+
+Aleksandr Dzhumurat [7:52 AM]
+Доброе утро, все ссылки есть в презентации(слайд 21 кажется)
+
+Aleksandr Dzhumurat [8:09 AM]
+Репозиторий на github  содержит зовет-файлы, которые пригодятся на 4-м занятии курса, а так же некоторый вспомогательный код для второго занятия. Прямо сейчас ничего запускать нет необходимости
+Иван Мокров
+У меня нормально работающий Докер под виндой, нормально запускает виртуалки из репозитория. У меня один вопрос -- ссылка на GIT что с ней делать. Я тупой, умею клонировать и подключиться к репозиториям GIT как разработчик. Как мне эту ссылку превратить в локальную фигню, которую можно стартануть в Докере?
+Posted in #вопросы-sqlJul 30th
+
+Kseniya Michailova [9:56 AM]
+joined #вопросы-sql.
+
+Aleksandr Dzhumurat [10:25 AM]
+Люди, которые столкнулись с ошибкой
+```docker: Error response from daemon: Cannot link to a non running container```
+попробуйте из команды сборки контейнера убрать --rm в конце, то есть запустите в виде
+```docker run --name netology-postgres -e POSTGRES_PASSWORD=netology_pass -d postgres```
+
+Stratosferova [11:15 AM]
+да, это помогает как раз. Я не могла понять зачем там --rm в конце)
+
+Stratosferova [12:10 PM]
+и еще вопрос (или дополнение) у меня запуск интрепретатора удался такой командой (вдруг кому поможет) docker exec -it netology-postgres psql -U postgres
+
+Stratosferova [12:10 PM]
+docker run -it --rm --link netology-postgres:postgres postgres psql -h postgres -U postgres - не получилось
+
+Aleksandr Dzhumurat [2:28 PM]
+спасибо @Stratosferova добавил этот способ в репозиторий
+Stratosferova
+и еще вопрос (или дополнение) у меня запуск интрепретатора удался такой командой (вдруг кому поможет) docker exec -it netology-postgres psql -U postgres
+Thread in #вопросы-sqlJul 31st
+
+MariA [5:15 PM]
+@Aleksandr Dzhumurat подскажите, пожалуйста, когда будет доступна запись Занятие 1.2. Основы баз данных?
+
+Aleksandr Dzhumurat [5:22 PM]
+Видеозапись заливает координатор курса @Руслан, Координатор
+
+Aleksandr Dzhumurat [5:56 PM]
+Кстати, у кого поднялся докер и кому нечем заняться (то есть домашка уже сделана) - попробуйте подготовиться ко второму занятию и выполнить инструкцию отсюда: https://github.com/Dju999/flask_docker_app/blob/master/slides/simple_dataset.md
+Эта инструкция позволяет поднять контейнер, в котором два образа: хост  c развернутой Postgres и машину с дистрибутивом Alpine Linux для общения с Postgres (edited)
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Павел Воробьев [10:34 PM]
+joined #вопросы-sql.
+
+Иван Мокров [11:28 PM]
+@Aleksandr Dzhumurat Вопрос такой был - Почему PostgreSQL, а не SQL Server, в котором с недавнего времени непосредственная нативная поддержка R и Python?
+
+Aleksandr Dzhumurat [11:49 PM]
+Потому что курс не про Posgres, или SQL Server, а про работу с данными с помощью SQL. Никаких специфичных для конкретной СУБД фишек продемонстрировано не будет, только общие приёмы
+@channel Запилил туториал по Google Cloud https://github.com/Dju999/flask_docker_app/blob/master/slides/google_cloud_instance.md
+Следуя инструкции я меньше чем за час поднял под Виндой виртуалку на Ubuntu 18.04, запустил докер и поднял контейнер для пятничного занятия. То есть Вам необходим только брузер, меньших системных требований требований невозможно придумать.
+Виртуалка стоит 26 баксов в месяц, при этом Гугл выдаёт кредит 300$ на то есть для прохождения курса хватит с головой и ещё останется.
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+
+
+
+
+01.08.2018
+Иван Мокров [1:02 AM]
+@Aleksandr Dzhumurat Я вообще дохулиганился, теперь у меня два дважка запущено, обращаться к любому можно:
+Pasted image at 2018-08-01, 1:02 AM 
+
+
+Иван Мокров [1:24 AM]
+*N.B.* Вообще, хозяйке на заметку, шлюз движка Postgree  запущенного в Докере у меня 172.17.0.1, DockerNAT 10.0.75.1, если жестко прописать таблицу маршрутизации, то время пинга чудесным образом падает со 100 мс. до нуля. Для занятий практической пользы в общем нет, но вообще может быть полезно:
+Pasted image at 2018-08-01, 1:24 AM 
+
+
+Иван Мокров [1:34 AM]
+@Руслан, Координатор @Aleksandr Dzhumurat Может мне инструкцию для винды в репозиторий написать? Линуксоиды наверняка сами умеют
+
+RuRM [8:01 AM]
+удалось поставить Докер ("Привет-Мир" запустился)
+не получается подключится к Постграс
+при вводе первой строчки
+   docker run --name netology-postgres -e POSTGRES_PASSWORD=netology_pass -d postgres
+выдает следующую ошибку
+  docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock:
+  Post http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/create?name=netology-postgres: dial unix   /var/run/docker.sock: connect: permission denied.
+  See 'docker run --help'.
+
+при вводе 1 команды (из списка "Если не помогло")
+  docker stop $(docker ps -a -q)
+выдает такую ошибку
+  Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock:
+  Get http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
+  "docker stop" requires at least 1 argument.
+  See 'docker stop --help'.
+  Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...] [flags]
+ Stop one or more running containers
+
+при вводе 2 команды
+  docker rm $(docker ps -a -q)
+тоже выдает ошибку
+  Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock:
+  Get http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
+  "docker rm" requires at least 1 argument.
+  See 'docker rm --help'.
+  Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...] [flags]
+  Remove one or more containers (edited)
+
+RuRM [8:08 AM]
+первая команда запустилась
+надо было перед ней добавить "sudo"
+идет скачивание каких-то библиотек
+это нормально?
+
+Aleksandr Dzhumurat [8:10 AM]
+Ура) да, это норм - скачивается дистрибутив Postgres. Это один раз будет происходить - при построении контейнера.
+
+RuRM [8:11 AM]
+а что делать со скаченным zip файлом "flask_docker_app-master"?
+он зачем то пригодится сейчас?
+
+Aleksandr Dzhumurat [8:13 AM]
+На пятничном занятии пригодится, архив нужно распаковать (edited)
+
+RuRM [8:21 AM]
+Спасибо Александр :+1:
+
+RuRM [9:55 AM]
+вопрос по домашке
+в последней таблице ("persons2content")
+что такое "id персоны" и "id контента"?
+подозреваю что "id персоны" это id в таблице "persons", а id контента в таблице "films"
+так ли это? (edited)
+если так то 
+persons2content - это серцевина "звезды"? (edited)
+
+Aleksandr Dzhumurat [10:09 AM]
+всё верно! Я дополнил описание домашки - теперь там есть информация про названия каждого поля и типа данных, который стоит использовать - это должно помочь при выполнении домашки
+https://github.com/Dju999/flask_docker_app/edit/master/slides/hw1.md
+GitHub
+Build software better, together
+GitHub is where people build software. More than 28 million people use GitHub to discover, fork, and contribute to over 85 million projects.
+
+RuRM [10:29 AM]
+почему в таблице "film" столбец с идентификатором назван "id" а в таблице person2content тот же идентификатор назван "film_id"?
+разве названия столбцов не должны совподать?
+аналогично по "id" в таблице "persons"
+
+Aleksandr Dzhumurat [10:40 AM]
+нет, названия столбцов совпадать в разных таблица не должны. Это хорошая практика в проетировании БД - если столбец является ключом в таблице, называть его просто id. В таблица, где поле не является ключом ему стоит давать названия, отражающие его суть
+
+RuRM [11:14 AM]
+понятно.
+а что является ключом в таблице "person2content"?
+
+Aleksandr Dzhumurat [11:17 AM]
+по сути ключ - это набор полей, который является уникальным для каждой строчки. Можно сказать, что в таблице person2content ключ состоит из двух полей: id_персоны + id_контента
+
+Stratosferova [12:08 PM]
+а я верно понимаю, что в той части домашки, где просто надо сделать две таблички (по презентации) ключом будут id ? Ну то есть вот так ок https://cloud.mail.ru/public/LTuH/hHy4xRqgD
+Облако@Mail.Ru
+Файл из Облака Mail.Ru
+Облако Mail.Ru - это ваше персональное надежное хранилище в интернете. Все нужные файлы всегда под рукой, доступны в любой точке мира с компьютера или смартфона.
+
+Aleksandr Dzhumurat [12:23 PM]
+В презентации поля, которые являются ключами, подсвечены оранжевым - там кажется совсем нет поля id
+http://wwwscr.digitalaccess.ru/Selection_024.png
+http://wwwscr.digitalaccess.ru/Selection_024.png
+
+Aleksandr Dzhumurat [12:24 PM]
+то есть на моём скриншоте ключ - это название фильма
+
+RuRM [12:58 PM]
+а как очистить таблицу если вдруг я ее запорол и хочу задать снова?
+
+Aleksandr Dzhumurat [12:59 PM]
+DROP TABLE имя_таблицы;
+
+RuRM [1:01 PM]
+и еще
+это нормально что столбец с датой релиза с часами секндами и минутами -которые по сути безсмысленны?
+как сделать чтобы показывал просто день месяц и год?
+Pasted image at 2018-08-01, 3:01 PM 
+
+
+Aleksandr Dzhumurat [1:03 PM]
+при создании таблицы вместо timestamp использовать date (и при добавлении записей тоже)
+
+RuRM [1:05 PM]
+круто, все получилось, спасибо)
+
+Stratosferova [1:15 PM]
+тут команды все кстати если вдруг что - сбросить там или поменять в табличке http://www.postgresqltutorial.com/
+postgresqltutorial.com
+PostgreSQL Tutorial - Learn PostgreSQL from Scratch
+Learn PostgreSQL quickly through a practical PostgreSQL tutorial designed for database administrators and application developers.
+
+RuRM [1:35 PM]
+я правильно понимаю, нужно создать три таблицы? (edited)
+Pasted image at 2018-08-01, 3:35 PM 
+
+
+RuRM [1:40 PM]
+и что значит "Решением будут SQL-запросы в формате .sql"?
+подойдет ли простой текстовый файл с набором строчек команд на исполнение?
+
+RuRM [1:47 PM]
+все, вродебы разобрался
+и отправил на проверку.
+
+Aleksandr Dzhumurat [2:11 PM]
+Да, простой текстовый файл подойдёт!
+
+Иван Мокров [10:51 PM]
+@Aleksandr Dzhumurat А есть какое-то соглашение по оформлению кода для SQL? Вот например, в нашей экосистеме на работе принято (в отношении SQL Server), чтобы названия таблиц писались капсом (edited)
+
+Aleksandr Dzhumurat [10:54 PM]
+нет, скоглашения нет. Присылайте в любом виде, главное чтобы работало - как вам удобнее. Postgres всё равно, SQL регистронезависим
+
+Иван Мокров [10:56 PM]
+@Aleksandr Dzhumurat Так то оно понятно, но если использовать в .Net инструменты типа Linq получается отлично читаемо даже чужой код, если следовать правилам. Но, ОК, я понял.
+
+Иван Мокров [11:02 PM]
+@Aleksandr Dzhumurat Еще вопрос, не по теме SQL, так не обижусь, если переадресуешь - а на очных занятиях будет хороший инет? Я сейчас смотрю тоскливо на свой ноут... Может мне проще будет по RDP подключиться к хорошей рабочей станции или серверу, их есть у меня. Тут вопрос лаги трафика против лагов самого ноута. (edited)
+
+Aleksandr Dzhumurat [11:05 PM]
+про технические характеристики канала в кампусе нетологии ничего не могу сказать, вопрос лучше задать координаторам программы.
+
+
+
+02.08.2018
+Руслан, Координатор [12:12 AM]
+Друзья, видео залито в личный кабинет. Там Саша заодно продемонстрировал, как можно решать проблемы с докером
+
+Alexey [12:13 PM]
+Александр, у меня не получается пересборать докер - ошибка отображается как sudo: docker-compose: команда не найдена
+
+Andrey Moskalev [11:16 PM]
+#вопрос в лекции прозвучало что если не уверены в типе данных, то лучше использоать VARCHAR - правильно понимать что а) это наиболее общий формат без ограничений, б) его всегда можно заменить для столбйа? или бывает что нельзя? в эксель то все сразу видно...
+
+Andrey Moskalev [11:17 PM]
+Спасибо @Aleksandr Dzhumurat что нашли возможность перезаписать видео
+
+03.08.2018
+Arseny [3:16 PM]
+У меня при попытке python download_google_drive/download_gdrive.py 1YiclJxLxWZcHX8ObNiQaS0ZOVyyD7TX4 data.zip
+выскакивает ошибка Traceback (most recent call last):
+ File "download_google_drive/download_gdrive.py", line 12, in <module>
+   import requests
+ImportError: No module named requests
+это в Google cloud
+
+Aleksandr Dzhumurat [3:19 PM]
+кажется файл побился, попробуйте
+```download_google_drive/download_gdrive.py 1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK data.zip```
+@Arseny
+получилось?
+
+Arseny [3:22 PM]
+Permission denied
+
+Aleksandr Dzhumurat [3:23 PM]
+```python download_google_drive/download_gdrive.py 1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK data.zip```
+
+Arseny [3:25 PM]
+нет, опять в строке 12 No mudule named requests. В Google cloud делал все согласно описанию
+
+Grigoz [7:46 PM]
+вопрос, эти таблицы которые он выдает по запросу, они из базы кеггла?
+
+Ivan_K [7:47 PM]
+Вопрос: какой командой выйти из постгры в контейнер
+
+Pavel Pronchenko [7:47 PM]
+а почему может быть когда docker поднимаю и прописываю путь к данным он не копирует данные внутрь контейнера?
+
+Pavel Pronchenko [7:47 PM]
+\q
+это выход
+
+Aleksandr Dzhumurat [7:47 PM]
+@Ivan_K CTRL-D или \q
+
+Иван Мокров [7:47 PM]
+Слаааак!! На самом деле пока переспать нужно с архаичными идеями с командной строки в Постгри работать. Это для психов ИМХО (edited)
+
+Ivan_K [7:47 PM]
+Отлично, спасибо
+Я вышел из постгры и снова туда вошёл: магия
+
+Aleksandr Kosolapov [7:52 PM]
+@Aleksandr Dzhumurat Google Cloud будете продолжать использовать до конца курса?
+
+Aleksandr Dzhumurat [7:55 PM]
+я да, у меня выбора нет =[ На Ubuntu нельзя расшарить cleeckmeeting
+
+Arseny [7:55 PM]
+В google cloud удалось подключиться к instance только один раз. Далее командная строка не коннектилась. Видимо время ожидания превышалось
+
+MariA [8:08 PM]
+Не видро ваш рабочий стол @Aleksandr Dzhumurat
+
+AlexM [8:09 PM]
+!!! НЕ ВИДНО РАБОЧИЙ СТОЛ !!! HELP !!!
+
+Grigoz [8:09 PM]
+@Aleksandr Dzhumurat не видно экран!
+
+AlexM [8:10 PM]
+... что то как то не помогает ...
+
+Anna Kirichenko [8:10 PM]
+@Руслан, Координатор Хелп) Мы не видим нерасшаренный стол) (edited)
+
+AlexM [8:33 PM]
+Для понимания действия JOIN мне хорошо помогла картинка http://qaru.site/img/0d5efa70866c8ba79b596ec40adda7dc.png
+http://qaru.site/img/0d5efa70866c8ba79b596ec40adda7dc.png
+
+На ней действие показано по аналогии действий над множествами.
+
+
+
+06.08.2018
+Arseny [2:05 AM]
+подскажите как в docker'е на Линукс записывать запросы в файлы *.sql? Я сейчас копирую из терминала текст своих запросов и вставляю в текстовый редактор, далее называю файл*  .sql. Подозреваю, что можно делать как-то проще
+
+Arseny [2:11 AM]
+Александр, еще просьба - можно уделить на следующем занятии несколько минут времени, чтобы рассказать на пальцах, что такое докер и что происходит когда мы запускаем его? С пониманием баз данных и языка sql у меня проблем нет. Но вот все эти контейнеры, образы, реестры - для меня тяжело доходят. Может, есть какая-то аналогия с реальными вещами и процессами? Статья "понимая докер" не очень помогла https://habr.com/post/253877/
+Хабр
+Понимая Docker
+Уже несколько месяцев использую docker для структуризации процесса разработки/доставки веб-проектов. Предлагаю читателям «Хабрахабра» перевод вводной статьи о...
+
+Aleksandr Dzhumurat [2:09 PM]
+я напоминаю кстати, что качать новую версию репозитория нужно перед каждоым занятием - там набегают большие изменения и если не обновить репозиторий то часть примернов буде работать не так, как Вы ожтдаете
+
+Aleksandr Dzhumurat [5:09 PM]
+Возникло какое-то недопонимание про запрос из домашки 4.2:
+```посчитать средний рейтинг по пользователям, у которых более 10 оценок```
+- то есть должно быть ОДНО число  - средний рейтинг по всем пользователям, попадающим под условие
+
+Ivan_K [5:10 PM]
+а как сделать одно число?
+
+Aleksandr Dzhumurat [5:12 PM]
+там подсказка есть, используйте CTE
+
+Ivan_K [5:15 PM]
+Я так и делаю с помощью CTE, но затык, не получается пок
+
+Aleksandr Dzhumurat [7:04 PM]
+https://github.com/Dju999/flask_docker_app
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Aleksandr Dzhumurat [7:15 PM]
+https://github.com/Dju999/flask_docker_app/blob/master/slides/window_functions.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Valeriya [7:16 PM]
+все норм
+
+Grigoz [7:16 PM]
+все норм
+
+Alexey Murzin [7:16 PM]
+Все норм
+
+RuRM [7:16 PM]
+Вижу
+
+Aleksandr Kosolapov [7:16 PM]
+все норм!)
+
+Aleksandr Dzhumurat [7:18 PM]
+```git fetch; git reset --hard origin/master```
+
+Aleksandr Dzhumurat [7:28 PM]
+sudo docker-compose --project-name postgres-client -f docker-compose.yml run --rm postgres-client
+
+Aleksandr Dzhumurat [7:58 PM]
+```SELECT userId, movieId, rating,
+    SUM(rating) OVER (PARTITION BY userId) as sum_rating
+    FROM (SELECT DISTINCT userId, movieId, rating FROM ratings WHERE userId <>1 LIMIT 1000) as sample
+    ORDER BY userId, rating DESC LIMIT 20;```
+- добавить ORDER BY
+результатами можно в чатике делиться
+
+Kirill [8:02 PM]
+@Aleksandr Dzhumurat какую задачу мы должны решить добавлением order by?
+
+Anna Kirichenko [8:02 PM]
+Я так понимаю должна получиться накопительная сумма проставленных баллов (edited)
+
+Aleksandr Dzhumurat [8:02 PM]
+Правильно, накопленная сумма должна получиться
+
+Anna Kirichenko [8:03 PM]
+У меня получился вот такой вариант:
+userid | movieid | rating | sum_rating 
+--------+---------+--------+------------
+     4 |    1377 |      3 |          3
+     4 |    1674 |      5 |          8
+     5 |     344 |    3.5 |        3.5
+     5 |    3753 |    3.5 |          7
+     8 |     805 |    3.5 |        3.5
+     8 |     356 |      4 |        7.5
+     9 |    1682 |      5 |          5
+    10 |    2410 |      2 |          2
+
+Aleksandr Dzhumurat [8:03 PM]
+Похоже на правду)
+Попробуйте разделить на сумму рейтингов каждое значение
+Чтобы в %% получилось
+То есть добавить деление на другую оконную функцию
+
+Anna Kirichenko [8:07 PM]
+вот так?
+
+Anna Kirichenko [8:08 PM]
+userid | movieid | rating |     sum_rating    
+--------+---------+--------+--------------------
+     4 |    1377 |      3 |              0.375
+     4 |    1674 |      5 |                  1
+     5 |     344 |    3.5 |                0.5
+     5 |    3753 |    3.5 |                  1
+     8 |     805 |    3.5 |  0.466666666666667
+     8 |     356 |      4 |                  1
+     9 |    1682 |      5 |                  1
+    10 |    2410 |      2 |                  1
+
+Stratosferova [8:08 PM]
+userid | movieid | rating | sum_rating 
+--------+---------+--------+------------
+     4 |    1674 |      5 |          8
+     4 |    1377 |      3 |          3
+     5 |    3753 |    3.5 |          7
+     5 |     344 |    3.5 |          7
+     8 |     356 |      4 |        7.5
+     8 |     805 |    3.5 |        3.5
+     9 |    1682 |      5 |          5
+
+Ivan_K [8:08 PM]
+userid | movieid | rating | sum_rating 
+--------+---------+--------+------------
+     4 |    1377 |      3 |          3
+     4 |    1674 |      5 |          8
+     5 |     344 |    3.5 |          7
+     5 |    3753 |    3.5 |          7
+     8 |     805 |    3.5 |        3.5
+     8 |     356 |      4 |        7.5
+     9 |    1682 |      5 |          5
+
+AlexM [8:10 PM]
+userid | movieid | rating | sum_rating 
+--------+---------+--------+------------
+     4 |    1377 |      3 |          3
+     4 |    1674 |      5 |          8
+     5 |     344 |    3.5 |        3.5
+     5 |    3753 |    3.5 |          7
+     8 |     356 |      4 |          4
+     8 |     805 |    3.5 |        7.5
+     9 |    1682 |      5 |          5
+    10 |    2410 |      2 |          2
+
+Kseniya Michailova [8:10 PM]
+userid | movieid | rating | sum_rating_metric  
+--------+---------+--------+--------------------
+     4 |    1674 |      5 |                  1
+     4 |    1377 |      3 |              0.375
+     5 |    3753 |    3.5 |                  1
+     5 |     344 |    3.5 |                0.5
+     8 |     356 |      4 |  0.533333333333333
+     8 |     805 |    3.5 |                  1
+     9 |    1682 |      5 |                  1
+    10 |     152 |      4 |  0.444444444444444
+    10 |    1036 |      3 |  0.777777777777778
+    10 |    2410 |      2 |                  1
+    11 |     169 |      3 |                  1
+    12 |    3825 |      5 |                  1
+    14 |    3751 |      4 |                  1
+    15 |    2413 |    4.5 |  0.289719626168224
+    15 |    1689 |    4.5 |  0.205607476635514
+    15 |   60684 |      4 |  0.766355140186916
+    15 |    2918 |      4 |  0.364485981308411
+    15 |     145 |    3.5 | 0.0654205607476635
+    15 |    6650 |    3.5 |  0.588785046728972
+    15 |  115713 |    3.5 |  0.831775700934579
+
+Ivan_K [8:11 PM]
+userid | movieid | rating | strange_rating_metric 
+--------+---------+--------+-----------------------
+     4 |    1674 |      5 |                 0.625
+     4 |    1377 |      3 |                     1
+     5 |    3753 |    3.5 |                   0.5
+     5 |     344 |    3.5 |                   0.5
+     8 |     356 |      4 |     0.533333333333333
+     8 |     805 |    3.5 |                     1
+     9 |    1682 |      5 |                     1
+
+Alexey [8:11 PM]
+userid | movieid | rating | strange_rating_metric 
+--------+---------+--------+-----------------------
+     4 |    1377 |      3 |                     3
+     4 |    1674 |      5 |                     8
+     5 |     344 |    3.5 |                   3.5
+     5 |    3753 |    3.5 |                     7
+     8 |     805 |    3.5 |                   7.5
+     8 |     356 |      4 |                     4
+     9 |    1682 |      5 |                     5
+и если поделить на сумму также по пользователям userid | movieid | rating | strange_rating_metric 
+--------+---------+--------+-----------------------
+     4 |    1377 |      3 |                 0.375
+     4 |    1674 |      5 |                     1
+     5 |    3753 |    3.5 |                     1
+     5 |     344 |    3.5 |                   0.5
+     8 |     805 |    3.5 |                     1
+     8 |     356 |      4 |     0.533333333333333
+     9 |    1682 |      5 |                     1
+
+AlexM [8:13 PM]
+userid | movieid | rating |       param        
+--------+---------+--------+--------------------
+     4 |    1377 |      3 |              0.375
+     4 |    1674 |      5 |                  1
+     5 |     344 |    3.5 |                0.5
+     5 |    3753 |    3.5 |                  1
+     8 |     356 |      4 |  0.533333333333333
+     8 |     805 |    3.5 |                  1
+     9 |    1682 |      5 |                  1
+    10 |    2410 |      2 |                  1
+    11 |     169 |      3 |                  1
+    12 |    3825 |      5 |                  1
+    14 |    3751 |      4 |                  1
+    15 |     145 |    3.5 | 0.0666666666666667
+    15 |     342 |      3 |  0.123809523809524
+    15 |    1689 |    4.5 |   0.20952380952381
+    15 |    2413 |    4.5 |  0.295238095238095
+    15 |    2918 |      4 |  0.371428571428571
+    15 |    3390 |      1 |   0.39047619047619
+    15 |    4881 |    1.5 |  0.419047619047619
+    15 |    4888 |      3 |  0.476190476190476
+    15 |    6203 |      3 |  0.533333333333333
+
+Grigoz [8:18 PM]
+может кто нибудь скинуть правильный ORDER BY?
+
+Anna Kirichenko [8:25 PM]
+PyCharm очень удобная среда, но там постоянно нужно мучиться с сервером лицензии:slightly_frowning_face: Есть какие-нибудь варианты получить скидку на IDE или стабильный сервер? Или достаточно СE?
+
+Stratosferova [8:30 PM]
+я комьюнити юзаю
+
+Vladislav Korotych [8:31 PM]
+VS Code?
+
+Aleksandr Kosolapov [8:57 PM]
+@Aleksandr Dzhumurat Питон для взаимодействия с  табличными файлами или БД  может быть альтернативой Докеру для тех же задач? (edited)
+
+Aleksandr Dzhumurat [8:59 PM]
+саму БД надо где-то развернуть? Я вот в докере разворачивать советую) Для взаимодействия Python и БД я докер-файлы уже скнфигурировал - посмотрите в репозитории в папке python-interactions (edited)
+
+
+
+07.08.2018
+Aleksandr Dzhumurat [7:13 AM]
+поправил код в репозитории в соответствии со вчерашними замечаниями - всем нужно скачать новую версию репозитория
+
+RuRM [1:04 PM]
+А можно еще раз ссылочку на данные для 2ого и 3его домашнего задания?
+И еще раз поподробнее с тем как разархивировать а затем и подключить эти данные,
+в случии если я не хочу использовать google-cloud машину, а хочу все проделать на своем linuxMint? (edited)
+
+Aleksandr Dzhumurat [1:07 PM]
+все ссылки есть в инструкции, будут работать для любого линукса https://github.com/Dju999/flask_docker_app/blob/master/slides/google_cloud_instance.md#Подготовка-инстанса-к-работе Возможно только пакетный менеджер у Вас другой будет вместо apt-get (edited)
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+RuRM [1:10 PM]
+может я туплю, но где взять data.zip (тот который упоминается в инструкции и нужен для выполнения задания)?
+
+Aleksandr Dzhumurat [1:11 PM]
+в инструкции есть как его скачть, он на GoogleDrive лежит
+```python download_google_drive/download_gdrive.py 1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK data.zip```
+
+RuRM [1:13 PM]
+у меня пишет ошибку
+python: can't open file 'download_google_drive/download_gdrive.py': [Errno 2] No such file or directory
+
+Aleksandr Dzhumurat [1:14 PM]
+в инструкции есть об этом
+```Теперь zip-архив с данными, который я заранее залил на Google Drive нужно перенести в виртуалку Google Cloud. Для этого  склонируем полезный репозиторий
+
+<pre>
+git clone https://github.com/chentinghao/download_google_drive.git
+</pre>```
+
+RuRM [1:15 PM]
+получилось, спасибо
+
+RuRM [1:36 PM]
+Я правильно понимаю что единственный способ выполнить дом.работу это зарегиситрировать на google-cloud виртуальную машину и открыть льготный годичный период?
+А если я не хочу регистрироваться
+могу я обойтись без виртуальной машины от google? (edited)
+У меня вполне мощный комп (16Гб ОЗУ и 8ми ядерный Core i7) (edited)
+
+Aleksandr Dzhumurat [1:52 PM]
+Нет, докер можно поднять и на локальной машине
+Инструкции для винды в первой лекции
+В слайдах
+
+RuRM [1:53 PM]
+докер - я поднял
+я не могу разархивировать data.zip
+solovushka@G74Sx:~/flask_docker_app/postgres_interactions$ rm -rf /tmp/data; unzip data.zip -d  /tmp/data
+unzip:  cannot find or open data.zip, data.zip.zip or data.zip.ZIP.
+
+Aleksandr Dzhumurat [1:56 PM]
+Эту команду надо запускать в директории, куда вы скачали data.zip
+
+RuRM [2:03 PM]
+на самом деле не очень понятно куда он сохранил data.zip по вот этой команде
+
+solovushka@G74Sx:~/flask_docker_app/postgres_interactions$ rm -rf /tmp/data; unzip data.zip -d  /tmp/data (edited)
+
+Aleksandr Dzhumurat [2:05 PM]
+Потому что вот в этой команде происходит только распаковка
+Скачивание тут
+Aleksandr Dzhumurat
+в инструкции есть об этом
+```Теперь zip-архив с данными, который я заранее залил на Google Drive нужно перенести в виртуалку Google Cloud. Для этого  склонируем полезный репозиторий
+
+<pre>
+git clone https://github.com/chentinghao/download_google_drive.git
+</pre>```
+Posted in #вопросы-sqlAug 7th
+
+RuRM [2:07 PM]
+и как мне его не "перенести в виртуалку Google Cloud"
+а залить себе на диск скажем в папку загрузки? (edited)
+
+Aleksandr Dzhumurat [2:08 PM]
+Выполните команду python download_google_drive/download_gdrive.py 1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK data.zip в папке Загрузки (edited)
+GitHub
+chentinghao/download_google_drive
+download_google_drive - Download files from Google Drive using Python 2 or Python 3
+
+RuRM [2:16 PM]
+все равно говорит что такого файла в директории нет
+python: can't open file 'download_google_drive/download_gdrive.py': [Errno 2] No such file or directory
+
+Aleksandr Dzhumurat [2:19 PM]
+Это же другая ошибка. Скопируйте директорию download_goofle_drive туда, где вызываете команду
+
+RuRM [2:21 PM]
+еееее! пошла закачка
+
+RuRM [3:15 PM]
+при попытке построения контейнера выдает ошибку в самом конце (edited)
+
+Aleksandr Dzhumurat [3:21 PM]
+ну у Вас на хост-машине видимо postgres запущен
+
+Aleksandr Dzhumurat [3:21 PM]
+что выводит
+```sudo netstat -nlp | grep 5432```
+(edited)
+
+Aleksandr Kosolapov [3:24 PM]
+@Aleksandr Dzhumurat Вопрос такой - в какое место скачанного репозитория flask**** залить файлы data и load_data.sh
+
+Aleksandr Kosolapov [3:24 PM]
+Снимок экрана 2018-08-07 в 15.20.29.png 
+
+
+Aleksandr Kosolapov [3:25 PM]
+Снимок экрана 2018-08-07 в 15.24.45.png 
+
+почему-то не видит
+
+Aleksandr Dzhumurat [3:27 PM]
+@RuRM вы либо postgres на хост-машине прибейте, либо в docker-compose поправьте раздел `ports`
+
+RuRM [4:13 PM]
+мда... проблеммы продолжаются
+двигаюсь по tutotial ко второму заданию там где про SELECT, пытаюсь создать таблицу, выдает ошибку:
+postgres=# psql --host $APP_POSTGRES_HOST -U postgres -c 'CREATE TABLE IF NOT EXISTS temp (movieId bigint, imdbId varchar(20), tmdbId varchar(20));'
+postgres-# ;
+ERROR:  syntax error at or near "psql"
+LINE 1: psql
+       ^
+
+Aleksandr Dzhumurat [4:19 PM]
+выполните команду
+```psql --host $APP_POSTGRES_HOST -U postgres -c 'CREATE TABLE IF NOT EXISTS temp (movieId bigint, imdbId varchar(20), tmdbId varchar(20));'```
+
+RuRM [4:49 PM]
+а как мне заранее узнать какие у той или иной таблице существуют поля?
+ну например чтобы написать запрос по ним?
+
+Aleksandr Dzhumurat [4:49 PM]
+SELECT * FROM таблица LIMIT 1
+
+Vladislav Korotych [9:43 PM]
+select * from information_schema.columns where table_name = 'название таблицы';
+
+08.08.2018
+Arseny [12:18 AM]
+Мне как человеку не очень близкому к разработке ПО, легче так представить Докер. Docker - машина времени. Host -настоящее, Client - будущее. Файлы docker-compose.yml и Dockerfile - приборная панель с выбором года для путешествий во времени. Docker Compose - папка в бардачке с правами, ПТС, страховкой. Папка src - багажник или портал.  Container - бардачок. Похоже на правду?
+
+Aleksandr Kosolapov [12:45 AM]
+Да, а мы экипаж, летящий за профессией будущего в недалекое будущее
+
+09.08.2018
+RuRM [8:47 AM]
+Двигаюсь по примеру к туториалу 3.
+Почему в собранном контейнере папка data может оказаться пустой?
+(Собираю докер контейнер в папке "postgres-interactions")
+
+Irina Belaya [9:38 AM]
+При попытке скачать репозиторий: git clone https://github.com/chentinghao/download_google_drive.git пишет fatal: destination path 'download_google_drive' already exists and is not an empty directory.
+GitHub
+chentinghao/download_google_drive
+download_google_drive - Download files from Google Drive using Python 2 or Python 3
+
+
+10.08.2018
+RuRM [7:40 AM]
+Приветствую.
+Приближается время лабораторных.
+Для меня все еще актуален вопрос с посещением, а вернее с невозможностью физического посещения этих лаб.
+Возможно ли пройти лабу по SQL (18 августа) и итоговый проэкт по SQL (26 августа) удаленно?
+Еcли да:
+Как это будет реализовано технически?
+Может через Skipe?
+
+Victor Pimshin [7:36 PM]
+докер стоит, по какой ссылке скачать образ?
+
+Averin Alex [7:47 PM]
+а пришлите пожалуйста итоговый код для вставки элементов в таблицу
+
+Averin Alex [7:47 PM]
+для тех кто прослушал что нужно поменять
+Multidimensional arrays must have sub-arrays with matching dimensions.
+
+11.08.2018
+Aleksandr Dzhumurat [12:33 PM]
+@here доработал все презентации, исправил ошибки с предыдущих занятий. Поправил все ссылки на github.
+В самих репозиториях я в шапку каждого Dockerfile добавил полезные команды - как собрать контейнер, как запустить контейнер и т.д. (включая полезные команды для запуска уже внутри контейнера - например, как запустить Postgres или Mongo) Обновлённые презентации тутЖ
+Занятие 1
+https://docs.google.com/presentation/d/1S_2HOZ-Z072YLCoU7AMjc3x2pCHq3aBIVPB4yi1Jnqs/edit?usp=sharing
+Занятие 2
+https://docs.google.com/presentation/d/1BIAqTMNl0FiEl0IbceQct0EZ2Y5NH0QvdU9vYpFwmb0/edit?usp=sharing
+Занятие 3
+https://docs.google.com/presentation/d/1jxbmkcj2cv_V522dEN6YXIWeMacDWuesGu865n_aK2M/edit?usp=sharing
+Занятие 4
+https://docs.google.com/presentation/d/1UfXo1IJfhB219R0djmHgJp3iDTLmtWFdRkYJP7vY0z0/edit?usp=sharing
+GDocs Presentation 
+Занятие 2 Нетология, Основы SQL
+Presentation from Google Drive
+
+GDocs Presentation 
+Занятие 3 Нетология, Углубление в SQL: аналитические функции
+Presentation from Google Drive
+
+GDocs Presentation 
+Занятие 4 Нетология: работа с PostgreSQL
+Presentation from Google Drive
+
+если вы вдруг присоединились к курсу только что - можно двигаться по презентациям - там есть ссылки на все примеры и туториалы - например, я добавил в первую презентацию инструкцию по разворачиванию GoogleCloud
+Припинил сообщение в шапке канала - пожалуй, оно будет обновляться по мере выкладывания новых презентаций
+
+12.08.2018
+Aleksandr Kosolapov [2:48 PM]
+@Aleksandr Dzhumurat добрый день! в 4-ой домашке гиперссылки для INTERSECT и EXPECT должны быть рабочие? https://github.com/Dju999/flask_docker_app/blob/master/slides/hw4.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Aleksandr Dzhumurat [2:49 PM]
+https://github.com/Dju999/flask_docker_app/blob/master/slides/sql_simple_dataset_merge.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Aleksandr Dzhumurat [4:12 PM]
+В репозитории ссылка битая, вечером поправлю (edited)
+
+Victor Pimshin [10:51 PM]
+инстанс поднял, постгрес работает, что ещё нужно проверить (скачать) перед занятием в Пн.?
+
+
+13.08.2018
+Aleksandr Dzhumurat [7:23 AM]
+@here мы закончили с Postgres. Сегодня будет новый контейнер с Mongo - попробуйте выполнить инструкции отсюда А уже всё, мы закончили с postgres. Следующее занятие по Mongo -https://github.com/Dju999/flask_docker_app/blob/master/slides/mongo_build.md , запускать сборку нужно в директории mongo_interactions
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Averin Alex [12:00 PM]
+:~/flask_docker_app/mongo_interactions$ sudo docker-compose --project-name mongo-client -f docke
+r-compose.yml run --rm alpine-client
+ERROR: No such service: alpine-client
+при попытке запустить mongo выдает ошибку
+при этом  
+mongoclient_mongo-client_1   /bin/sh                       Up                              
+mongoclient_mongo_host_1     docker-entrypoint.sh mongod   Up      0.0.0.0:27017->27017/tcp
+
+Aleksandr Dzhumurat [12:01 PM]
+Посмотрите в шапку файла `mongo_interactions/Dockerfile` там написано как запускать
+
+Averin Alex [12:12 PM]
+вроде бы запустилось, спасибо! но вечером мы же сможем уделить этому немного времени?
+
+Stratosferova [1:24 PM]
+у меня тоже запустилось. Там то же самое как и в случае с посгрес. Только подольше выгружает все!
+
+Alexey Konstantinov [1:26 PM]
+Всем привет
+Добрался до докера
+А как клонировать репозиторий?
+Flask_docker_app?
+
+Ivan_K [1:54 PM]
+Да
+
+Anna Kirichenko [4:16 PM]
+Хочу добавить строку ‘RUN psql --host $APP_POSTGRES_HOST -U postgres’ в Dockerfile, чтобы postgres сразу запускался при старте контейнера, но возникает ошибка: ’Service ‘postgres_client’ failed to build: The command ‘/bin/sh -c psql --host $APP_POSTGRES_HOST -U postgres’ returned a non-zero code: 2’ (edited)
+
+Irina Belaya [6:05 PM]
+При запуске mongo ERROR: unsatisfiable constraints: he command '/bin/sh -c apk update && apk upgrade && apk --no-cache --update-cache add mongodb su-exec curl mongodb-tools nano' returned a non-zero code: 5
+
+Pavel Pronchenko [6:11 PM]
+у меня аналогичная ошибка ( ERROR: unsatisfiable constraints: he command '/bin/sh -c apk update && apk upgrade && apk --no-cache --update-cache add mongodb su-exec curl mongodb-tools nano' returned a non-zero code: 5
+И на локальном Ubuntu и в google cloud
+(
+
+Aleksandr Dzhumurat [6:14 PM]
+Странно, у меня на ноуте с убунтой работает, а в клауде я не проверил. Видимо, будем решать эту проблему в начале семинара, если не заведется в корпусе у меня)
+
+Ivan_K [6:42 PM]
+У меня на
+mac такая же ошибка
+
+Aleksandr Dzhumurat [7:18 PM]
+короче я всё поправил, но у меня на clickmeeting не включается камера и микрофон
+
+Anna Kirichenko [7:18 PM]
+Можем перенести на завтра?
+
+Pavel Pronchenko [7:18 PM]
+может есть еще варианты конференций? zoom, bluejeans?
+
+Stratosferova [7:21 PM]
+может правда завтра? а сегодня доделать 4 домашку)))
+
+Anna Kirichenko [7:22 PM]
+За 24 часа можно будет порешать все технические траблы как раз:clock12::wrench:
+
+Victor Pimshin [7:33 PM]
+мы тут обсуждаем??
+
+Pavel Pronchenko [7:34 PM]
+Я за перенос ) Не вижу смысла ждать - за 30 минут микрофон не включился (
+
+Aleksandr Dzhumurat [9:40 PM]
+Я поправил Dockerfile - нужно было поставить более старые версии MongoDB и MONGODB-tools. Можно скачать новую версию репозитория и еще раз попробовать (edited)
+Irina Belaya
+При запуске mongo ERROR: unsatisfiable constraints: he command '/bin/sh -c apk update && apk upgrade && apk --no-cache --update-cache add mongodb su-exec curl mongodb-tools nano' returned a non-zero code: 5
+Posted in #вопросы-sqlAug 13th
+
+Alexey [9:44 PM]
+да, так все без ошибок, спасибо
+
+Aleksandr Dzhumurat [9:48 PM]
+презентация для завтрашнего занятия https://docs.google.com/presentation/d/1a_CSH7d2E8VwomkAX7mT2AHxr-oUvDhDm6oRpeKAcDk/edit?usp=sharing
+Ссылка на ДЗ №5: https://github.com/Dju999/flask_docker_app/blob/master/slides/hw5.md
+Можно самостоятельно поискать в примеры, пока видео не подъвезут
+GDocs Presentation 
+Занятие 5 Нетология: работа с MongoDB
+Presentation from Google Drive
+
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+
+14.08.2018
+Valeriya [10:43 AM]
+при выполнение команды sudo docker-compose --project-name mongo-client -f d
+ocker-compose.yml run --rm alpine-client
+выдает: ERROR: No such service: alpine-client
+
+Aleksandr Dzhumurat [11:12 AM]
+На всякий случай еще раз напомню: в шапке каждого докерфайла есть информация, как запускать проект
+Valeriya
+при выполнение команды sudo docker-compose --project-name mongo-client -f d
+ocker-compose.yml run --rm alpine-client
+выдает: ERROR: No such service: alpine-client
+Thread in #вопросы-sqlAug 14th
+
+Pavel Pronchenko [12:01 PM]
+Александр, спасибо! Монго поднял, иду по презентации и слайдам гитхаба - все работает.
+
+Aleksandr Dzhumurat [12:09 PM]
+круто) все берите пример с @Павел Воробьев Слайды и ссылки на github дадут какое-то представление о том, что происходит и вы сможете начать задавать первые впоросы. А я сегодня запишу офлайн видос с этим занятием
+
+Aleksandr Dzhumurat [11:09 PM]
+Ссылка на видео (файл скоро обработается) https://drive.google.com/file/d/11MbgMAvvhi6LoISEp7suknmcotVTYJek/view?usp=sharing
+Flash Video 
+2018-08-14 22-23-03.flv
+138 MB Flash Video from Google Drive
+
+15.08.2018
+Dima Muzalevskiy [2:08 PM]
+joined #вопросы-sql by invitation from адель.
+
+Kraas [6:26 PM]
+Подскажите пожалуйста, в чём может быть ошибка. Не могу запустить докер контейнер, постоянно выскакивает ошибка:Starting postgresclient_postgres_host_1 ... error
+port is already allocated
+ERROR: Encountered errors while bringing up the project.
+
+16.08.2018
+Stanislav [11:54 AM]
+Добрый день. Не собирается контейнер, ссылку на сборку брал из последней версии на гитхабе, которая указана в презентами. Выдает ошибку Service 'mongo-client' failed to build: The command '/bin/sh -c apk update && apk upgrade && apk --no-cache --update-cache add mongodb su-exec curl mongodb-tools nano' returned
+a non-zero code: 5
+
+17.08.2018
+Vladislav Korotych [3:22 PM]
+не подскажете, что за ошибка:
+postgres=# select
+postgres-#   table_name,
+postgres-#   pg_relation_size(table_name) as tbl_size
+postgres-# from information_schema.tables
+postgres-# order by tbl_size desc
+postgres-# limit 5
+postgres-# ;
+ERROR:  relation "information_schema_catalog_name" does not exist
+
+Vladislav Korotych [3:31 PM]
+если брать только таблицы, то ругается уже на другую таблицу:
+postgres=#   select
+postgres-#     table_name,
+postgres-#     pg_table_size(table_name) as tbl_size
+postgres-#   from information_schema.tables
+postgres-#   where table_type = 'BASE TABLE'
+postgres-#   order by table_name
+postgres-#   ;
+ERROR:  relation "sql_features" does not exist
+по каким критериям фильтровать таблицы, для которых брать размер?
+
+Aleksandr Dzhumurat [3:45 PM]
+pg_table_size(table_name)  - это некорректно, кроме имени у таблицы есть ещё и схема
+
+Vladislav Korotych [3:46 PM]
+в примере схема тоже не указывалась:
+SELECT pg_size_pretty(pg_relation_size('ratings'));
+pg_size_pretty
+----------------
+2990 MB
+(1 row)
+или задача должна стоять как вывод топ-5 таблиц в текущей схеме]
+
+Aleksandr Dzhumurat [3:48 PM]
+нет, во всех схемах. Протсо добавляете название схемы к имени таблицы
+
+Vladislav Korotych [3:49 PM]
+ага
+
+Aleksandr Dzhumurat [6:58 PM]
+https://docs.google.com/presentation/d/1raOBSSESfP_S_g4ScLQsTsf2VMQJEZG-ikClfT8lECk/edit#slide=id.g3decc1d7b0_0_0 (edited)
+
+Aleksandr Dzhumurat [7:04 PM]
+как собрать контейнер https://github.com/Dju999/flask_docker_app/blob/master/slides/python_anaconda_build.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+RuRM [7:07 PM]
+а можно ссылку на новый дата зип?
+
+Aleksandr Dzhumurat [7:08 PM]
+Вот отсюда инструкция https://github.com/Dju999/flask_docker_app/blob/master/slides/google_cloud_instance.md#Работа-в-инстансе
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+Сделайте в консоли `git clone https://github.com/chentinghao/download_google_drive.git` (edited)
+GitHub
+chentinghao/download_google_drive
+download_google_drive - Download files from Google Drive using Python 2 or Python 3
+
+MariA [7:09 PM]
+@Aleksandr Dzhumurat
+sudo docker-compose --project-name py-db -f docker-compose.yml up --build -d
+ERROR: .IOError: [Errno 2] No such file or directory: u'./docker-compose.yml'
+
+Aleksandr Dzhumurat [7:09 PM]
+Потом `python download_google_drive/download_gdrive.py 1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK data.zip`
+
+RuRM [7:09 PM]
+есть
+
+Aleksandr Dzhumurat [7:10 PM]
+НУ, теперь `rm -rf /tmp/data; unzip data.zip -d  /tmp/data`
+
+Aleksandr Kosolapov [7:12 PM]
+прямая ссылка: https://drive.google.com/file/d/1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK/view
+
+Aleksandr Dzhumurat [7:12 PM]
+Успех?
+
+RuRM [7:12 PM]
+при команде на билд выдает несколько ошибок:
+roject-name py-db -f docker-compose.yml up --build -d
+Building python-db
+Step 1/5 : FROM continuumio/miniconda3
+---> 1284db959d5d
+Step 2/5 : ENTRYPOINT ["/bin/bash"]
+---> Using cache
+---> 88e99e1933a8
+Step 3/5 : RUN apt-get update && apt-get install -y  postgresql-client curl nano mongodb mongo-tools
+---> Using cache
+---> b0b5b6754eda
+Step 4/5 : RUN conda install -c anaconda scipy numpy pandas sqlalchemy pymongo psycopg2 msgpack-numpy lz4 msgpack-python
+---> Using cache
+---> 74f624371f4e
+Step 5/5 : COPY ./src/* /home/
+---> Using cache
+---> 9d7df2da2c35
+Successfully built 9d7df2da2c35
+Successfully tagged py-db_python-db:latest
+Starting py-db_mongo_host_1    ... error
+Starting py-db_postgres_host_1 ...
+
+ERROR: for py-db_mongo_host_1  Cannot start service mongo_host: b'driver failed programming external connectivity on endpoint py-db_mongo_host_1 (a18e704af0e34d90adc23908d2d5828262b0b436ae32ede9bc347170b37824bd): Bind for 0.0.0.0:27018 failStarting py-db_postgres_host_1 ... error
+
+ERROR: for py-db_postgres_host_1  Cannot start service postgres_host: b'driver failed programming external connectivity on endpoint py-db_postgres_host_1 (09f5809dd6abcdb83750be78f21c64084693f2ec1aa6d08d98143a37d28c6ce6): Bind for 0.0.0.0:5433 failed: port is already allocated'
+
+ERROR: for mongo_host  Cannot start service mongo_host: b'driver failed programming external connectivity on endpoint py-db_mongo_host_1 (a18e704af0e34d90adc23908d2d5828262b0b436ae32ede9bc347170b37824bd): Bind for 0.0.0.0:27018 failed: port is already allocated'
+
+ERROR: for postgres_host  Cannot start service postgres_host: b'driver failed programming external connectivity on endpoint py-db_postgres_host_1 (09f5809dd6abcdb83750be78f21c64084693f2ec1aa6d08d98143a37d28c6ce6): Bind for 0.0.0.0:5433 failed: port is already allocated'
+ERROR: Encountered errors while bringing up the project.
+
+Stratosferova [7:15 PM]
+python download_google_drive/download_gdrive.py 1D3CcWOSw-MUx6YvJ_4dqOLHZAh-6uTxK data.zip
+Traceback (most recent call last):
+ File “download_google_drive/download_gdrive.py”, line 14, in <module>
+   from tqdm import tqdm
+
+Stratosferova [7:15 PM]
+странная ошибка
+
+Victor Pimshin [7:16 PM]
+python: can't open file 'download_google_drive/download_gdrive.py': [Errno 2] No such file or directory
+
+Victor Pimshin [7:16 PM]
+это уже в запущенном докере
+
+Victor Pimshin [7:17 PM]
+или нужно было скачать - до сборки и запуска докера?
+
+Aleksandr Dzhumurat [7:17 PM]
+скачать до сборки нужно было
+
+Victor Pimshin [7:18 PM]
+аа
+
+Victor Pimshin [7:28 PM]
+фух, собрался только ща)
+
+Aleksandr Dzhumurat [7:28 PM]
+https://github.com/Dju999/flask_docker_app/blob/master/slides/python_psycopg.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+выход из Python: `quit()`
+`cd /home`
+`python`
+ `import psycopg2`
+`bash /home/load_data.sh`
+```params = {
+    "host": os.environ['APP_POSTGRES_HOST'],
+    "port": os.environ['APP_POSTGRES_PORT'],
+    "user": 'postgres'
+}
+conn = psycopg2.connect(**params)```
+`import os`
+```<connection object at 0x7fb70e35fd58; dsn: 'host=postgres_host port
+=5432 user=postgres', closed: 0>```
+`sql_str` 
+`ui_data[:10]`
+
+Victor Pimshin [7:46 PM]
+NameError: name 'cursor' is not defined
+
+Aleksandr Dzhumurat [7:48 PM]
+```psycopg2.extensions.register_type(
+    psycopg2.extensions.UNICODE,
+    conn
+)
+conn.set_isolation_level(
+    psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT
+)
+cursor = conn.cursor()```
+
+Victor Pimshin [7:49 PM]
+уже ок)
+
+Aleksandr Dzhumurat [7:50 PM]
+`import psycopg_example`
+
+Victor Pimshin [7:51 PM]
+pg_efe
+
+Pavel Pronchenko [7:51 PM]
+а можно же запустить из командной строки сразу ?
+
+Aleksandr Dzhumurat [7:52 PM]
+`python psycopg_example.py`
+https://github.com/Dju999/flask_docker_app/blob/master/slides/python_sqlalchemy.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+Ссылка на код
+https://github.com/Dju999/flask_docker_app/blob/master/python_interactions/src/sqlalchemy_example.py
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Arseny [8:07 PM]
+после запуска контейнера скрипт load_data.sh отрабатывает с ошибками типа такой "NOTICE:  table "ratings" does not exist, skipping
+DROP TABLE"
+
+Alexey Murzin [8:12 PM]
+class UITriplet(object):
+   “”"
+       Интеракция контента с пользователем
+
+       Содержит триплеты пользователь-контент-рейтинг
+   “”"
+   def __init__(self, user, item, rating):
+       self.user = user
+       self.item = item
+       self.rating = rating
+   def __repr__(self):
+       return “” % (self.user, self.item, self.rating)
+У меня вот так работает - через текстовый редактор удалить лишнюю строку.
+
+Aleksandr Dzhumurat [8:17 PM]
+`import sqlalchemy_example`
+
+Aleksandr Dzhumurat [8:23 PM]
+Слайды
+https://github.com/Dju999/flask_docker_app/blob/master/slides/python_pymongo.md
+Код
+https://github.com/Dju999/flask_docker_app/blob/master/python_interactions/src/pymongo_example.py
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+```import os
+
+from pymongo import MongoClient
+mongo = MongoClient(**{
+    'host': os.environ['APP_MONGO_HOST'],
+    'port': int(os.environ['APP_MONGO_PORT'])
+})
+db = mongo.get_database(name="movie")
+
+collection = db['tags']```
+
+Victor Pimshin [8:29 PM]
+# head -n3 '/data/keywords.tsv
+
+Aleksandr Dzhumurat [8:32 PM]
+`nano /home/pymongo_example.py`
+CTRL-O
+CTRL-X
+
+Aleksandr Dzhumurat [8:39 PM]
+Слайды
+https://github.com/Dju999/flask_docker_app/blob/master/slides/python_pandas.md
+Код
+https://github.com/Dju999/flask_docker_app/blob/master/python_interactions/src/pandas_example.py
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Pavel Pronchenko [8:42 PM]
+Александр, если будет возможность скиньте плз какие нибудь материалы для самостоятельного изучения по redis
+
+Aleksandr Dzhumurat [8:48 PM]
+`import pandas_example`
+
+Victor Pimshin [8:51 PM]
+Стол
+
+MariA [8:51 PM]
+не видим стол
+
+Victor Pimshin [8:52 PM]
+Аларм
+
+RuRM [8:52 PM]
+yt dblyj
+не видно то что ты показываешь
+
+AlexM [8:52 PM]
+рабочий стол !! )))
+
+Igor Bezrukikh [8:53 PM]
+https://github.com/Dju999/flask_docker_app/blob/master/python_interactions/src/hw6.py по файлу можно посмотреть :))
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+MariA [9:02 PM]
+@Aleksandr Dzhumurat всё ёщё слышим вас
+
+
+19.08.2018
+Aleksandr Dzhumurat [11:49 AM]
+@here ребята, нужен небольшой фидбэк по курсу. Что  вам кажется более интересным - учиться разворачивать докер-контейнеры и работать в более-менее боевой среде (где можно писать загрузку-выгрузку файлов, учиться работать с командной строкой линукса и т.д) Или второй вариант: использовать учебные поделки вроде сайта sqlfiddle.com, где надо самому руками создавать таблички и заполнять их данными - ту вы не получаете дополнительных знаний, зато вроде как домашки будут более простыми. Ответы в треде) это важно для следующих зпусков курса
+
+Anna Kirichenko [3:17 PM]
+Меня тут попросили покидаться ссылками, которые помогли разобраться в Docker. В основном моим помошником был хабр и официальная документация в качестве справочника: 
+1) https://habr.com/post/337306/  - очень интересная статья, написанная человеческим языком, но на мой взгляд незавершенная 
+2) https://habr.com/post/346634/ - можно почитать после приобретения базового понимания 
+3) https://docs.docker.com/ - документация по докеру 
+4) https://habr.com/post/253877/ - еще одна полезная статья с плюсами и минусами применения докера
+Еще один момент - очень полезным оказалось понимание абсолютных и относительных путей в докере.
+
+И кстати, если вы собираете контейнер, то Dockerfile можно описать для каждого контейнера, это очень полезно, а связанные файлы можно описывать относительными путями. Пример такой реализации как раз сделала для себя (три контрейнера: jupyter notebook, postgres client, postgres host, а связанные файлы сохраняются так же в репозитории только на уровень выше, папки data и jupyter) - https://github.com/kianya/jupyter-docker (edited)
+
+20.08.2018
+Victor Pimshin [2:25 AM]
+PDF 
+sql.pdf
+230 kB PDF
+
+
+Victor Pimshin [2:31 AM]
+PDF 
+python.pdf
+177 kB PDF
+
+
+22.08.2018
+Dmitry Mizinov [1:10 AM]
+Ребята, привет. Вопрос по домашке HW1. Требуется посчитать число фильмов без оценок. Стандартный запрос select count(movieid) as mov from ratings where rating is null  limit 10; дает нулевой результат. так же как и условие равенства оценки нулю. Построил кол-во фильмов по оценкам. Нулевых нет. Подскажите пожалуйста, что не так с логикой.
+
+Dmitry Mizinov [1:11 AM]
+postgres=# select count(movieid), rating from ratings group by rating;
+count | rating
+-------+--------
+10538 |    3.5
+20064 |      3
+28750 |      4
+ 7723 |    4.5
+ 3326 |      1
+ 1101 |    0.5
+ 1687 |    1.5
+ 4449 |    2.5
+ 7271 |      2
+15095 |      5
+(10 rows)
+
+Arseny [12:11 PM]
+Делаю домашку по   mongodb. Наткнулся на страницу где приводятся аналоги большинству sql конструкций. Может, пригодиться https://docs.mongodb.com/manual/reference/sql-comparison/index.html
+docs.mongodb.com
+SQL to MongoDB Mapping Chart — MongoDB Manual
+http://s3.amazonaws.com/info-mongodb-com/_com_assets/cms/mongodb-for-giant-ideas-bbab5c3cf8.png
+
+Victor Pimshin [12:41 PM]
+PDF 
+git.pdf
+378 kB PDF
+
+
+RuRM [1:48 PM]
+Вопрос по docker:
+Почему, по какой причине, таблицы с данными в postgras могут отсутствовать?
+я думал что при сборке контейнера вполне достаточно указать папку откуда брать csv файлы с исходными таблицами
+1) попытался создать свой докер файл
+2) изменил стандартный путь к папке с данными на свой:
+version: '2'
+services:
+ postgres_host:
+   image: postgres:10-alpine
+   restart: always
+   ports: ["5432:5432"]
+ postgres-client:
+   build:
+     context: .
+   depends_on:
+     - postgres_host
+   tty: true
+   environment:
+     - APP_POSTGRES_HOST=postgres_host
+     - APP_POSTGRES_PORT=5432
+   volumes:
+     - /home/solovushka/flask_docker_app/postgres_sql_project/sql_project_db/:/data
+   links: [postgres_host]
+3) собрал docker container
+4) запустил djckerfile
+5) запустил postgas
+6) попытался обратится к таблице links и обнаружил что ее не существует:
+
+postgres=# select * from links limit 10;
+ERROR:  relation "links" does not exist
+LINE 1: select * from links limit 10;
+
+При этом в папке data, внутри контейнера csv файлы лежат, не пустая:
+/ # ls data
+keywords.csv      links.csv         movies.csv        ratings.csv       simple_tags.json  test.json
+
+и файлы не пустые:
+/ # head data/links.csv
+movieId,imdbId,tmdbId
+1,0114709,862
+2,0113497,8844
+3,0113228,15602
+4,0114885,31357
+5,0113041,11862
+6,0113277,949
+7,0114319,11860
+8,0112302,45325
+9,0114576,9091
+
+В чем тут может быть дело? (edited)
+
+RuRM [3:16 PM]
+А как можно сохранить результат в файл внутри контейнера с postgres, так чтобы он появился снаружи на жестком диске?
+Я модифицирую исходные таблицы ratings и хочу их сохранить в новые csv файлы my_ratings.csv но снаружи, что бы потом использовать его вместо базового (edited)
+
+Vladislav Korotych [6:22 PM]
+дайте пожалуйста прямую ссылку на data.zip для шестого ДЗ
+
+Irina Belaya [10:16 PM]
+после запуска контейнера скрипт load_data.sh отрабатывает с ошибками типа такой "NOTICE:  table "ratings" does not exist, skipping
+DROP TABLE"  как от этой ошибки избавиться?
+
+Vladislav Korotych [10:46 PM]
+(base) root@d731e90bce7f:/# python /home/pymongo_example.py
+2018-08-22 19:45:08,070 : INFO : Создадаём подключение к Mongo
+2018-08-22 19:45:08,087 : INFO : sample tags: []
+2018-08-22 19:45:08,089 : INFO : Общее количество документов к коллекции: 0
+2018-08-22 19:45:08,090 : INFO : Пример аггрегации данных: top-5 самых популярных тегов
+[]
+pymongo_example.py ничего в монго не заливает
+как с этим бороться и как получить базу movie для выполнения задания?
+ручками прогнать запросы тоже не помогает - пусто
+
+Vladislav Korotych [10:55 PM]
+разобрался - всю малину портит вот это условие - if db.tags.count() > 0:
+
+
+23.08.2018
+Alex [12:07 PM]
+Всем Привет! У меня тут необходимость возникла перейти на старенький ноут hp, на нем win 7, 32-bit. Вот эта прога, - Microsoft® Hardware-Assisted Virtualization Detection Tool, говорит, что не находит computer processor supports HAV. У кого-нибудь есть опыт запуска docker в этих условиях? Если поставить Ubuntu что-то изменится? Спасибо!
+
+Alex [3:28 PM]
+Ок! Спасибо
+
+Alexey [7:50 PM]
+sql_str
+
+
+24.08.2018
+Dmitry Mizinov [12:16 AM]
+Всем привет. Подскажите пожалуйста как передать массив из CTE  в созданную функцию? Имя массива select funct(ar_1)  и вложенный запрос funct(select ar_1) from rr (rr -объявление в with)   не помогают.
+
+Иван Мокров [12:38 AM]
+select * from (edited)
+с функторами надо обращаться как с таблицами
+
+
+
+01.09.2018
+Vladislav Korotych [6:51 PM]
+пытаюсь загрузить данные в таблицу через \copy, а мне выдает ошибку ERROR:  invalid input syntax for type numeric: "646456,43"
+подозреваю, что он ожидает точку в качестве десятичного разделителя
+как его заставить обрабатывать запятую?
+
+
+02.09.2018
+Dmitry [10:47 PM]
+Всем  привет!
+застрял на моменте одном, может кто посоветовать что?
+есть таблица: все столбцы типа char. в postgress проблем не возникает, но когда сгружаю таблицу через питон, не пойму как фильтры накладывать:
+пример:
+
+>>>vendors = pd.read_sql('SELECT * FROM pw_vendors', engine)
+>>> vendors
+     vend_id    vend_name          vend_address          vend_city  vend_state     vend_country
+0  BRS01       Bears R Us          123 Main Street      Bear Town      MI              USA
+1  BRE02       Bear Emporium   500 Park Street       Anytown        OH             USA
+2  DLL01       Doll House Inc.   555 High Street      Dollsville        CA              USA
+3  FRB01       Furball Inc.           1000 5th Avenue    New York       NY              USA
+4  FNG01      Fun and Games    42 Galaxy Road       London           None          England
+5  JTS01       Jouets et ours      1 Rue Amusement   Paris               None          France
+
+хочу вывести список вендоров, которые расположены не на территории USA
+>>> vendors[vendors['vend_name']=='Bear Emporim']
+
+но получаю
+Empty DataFrame
+
+>>> vendors.dtypes
+vend_id         object
+vend_name       object
+vend_address    object
+vend_city       object
+vend_state      object
+vend_country    object
+dtype: object
+(edited)

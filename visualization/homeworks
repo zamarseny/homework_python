@@ -1,0 +1,1276 @@
+27.07.2018
+Руслан, Координатор [4:19 PM]
+set the channel purpose: Здесь будут обсуждаться все вопросы по домашним заданиям, проблемы с решением, выкладываться материалы по домашним заданиям
+
+Руслан, Координатор [5:06 PM]
+set the channel topic: Обсуждение домашних заданий
+
+29.07.2018
+Ivan_K [1:41 PM]
+joined #домашние_задания along with Иван Мокров.
+
+Иван Мокров [2:12 PM]
+Первое домашнее выполнено, скрытый канал был найден до его публичного представления [29.07 здесь был я] (edited)
+
+30.07.2018
+Irina Belaya [6:57 PM]
+joined #домашние_задания along with 13 others.
+
+02.08.2018
+Andrey Moskalev [11:50 PM]
+ориентировался изначально на установку Docker на винду (по факту посещения демовечера). 10-ка стоит, но увы ХомЭдишн, попробовал танцы с бубнами, не получилось, есть вариант установки, вместо Docker for Windows, Docker Toolbox под Oracle VM. Но это уже показалось вообще как-то странно. В итоге нашел решение в следующем - раскопал старый ноутбук с Core2 Duo, воткнул SSDшник, последовательно перебрал установки Ubuntu (сначала 18.04.1) встала и завелась без проблем 16.04 LTS. Установка Docker прошла вообще задорно. Но вот если бы знал вариант про вариант с Google Cloud, то наверное бы не заморачивался, хотя получил опыт с Линукс... (edited)
+
+03.08.2018
+Philipp Vasilyev [12:29 AM]
+joined #домашние_задания.
+
+Philipp Vasilyev [12:52 AM]
+Александр, на самом деле столкнулся с довольно странной проблемой: при попытке запустить контейнер   на маке
+‘ sudo docker start 2a99cb6629b78e7b5b6747a9bd453263940127909d91c8517e9ee0b230e60768 ’
+Докер просто не может его найти
+‘Error response from daemon: No such container: 2a99cb6629b78e7b5b6747a9bd453263940127909d91c8517e9ee0b230e60768
+Error: failed to start containers: 2a99cb6629b78e7b5b6747a9bd453263940127909d91c8517e9ee0b230e60768’
+
+Не очень понимаю, с чем это связано, ибо библиотеки я подключил
+
+AlexM [1:05 AM]
+joined #домашние_задания along with Arseny.
+
+
+05.08.2018
+Averin Alex [11:18 AM]
+А когда появится видео второго урока? Успеть бы сделать задание, а то уже следующее занятие в пнд
+
+Ivan_K [11:23 AM]
++1
+
+Stratosferova [1:33 PM]
+да, очень ждем видео @Руслан, Координатор наверное, сможет помочь
+а задания не будет, получается?)
+
+Aleksandr Dzhumurat [1:40 PM]
+я скидывал ссылку на презентацию, слайд 23 - там ссылка на домашку (плюч подробная инструкция по выполнению) https://docs.google.com/presentation/d/1BIAqTMNl0FiEl0IbceQct0EZ2Y5NH0QvdU9vYpFwmb0/edit?usp=sharing
+GDocs Presentation 
+Занятие 2 Нетология, Основы SQL
+Presentation from Google Drive
+
+
+Stratosferova [1:46 PM]
+но надо же чтобы и в раделе “Задания” что-то было. Чтобы приложить ссылку на гит. Или можно просто на почту скидывать ссылку?
+
+Aleksandr Dzhumurat [1:50 PM]
+ну я к тому что делать уже можно начинать) а загружать решения да, только через лк можно
+
+Stratosferova [1:53 PM]
+а, ок) спасибо! надо видео только дождаться теперь
+
+Averin Alex [8:53 PM]
+Да, без видео комментариев тяжело
+
+Aleksandr Dzhumurat [8:57 PM]
+Когда видео появится не могу сказать - этой информацией только координатор программы владеет. Но! в конце презентации есть ссылка на толковую ютуб-лекцию, где примерно то же самое рассказывается. Плюс про CTE можно посмотреть тут начиная с 9-ой минуты https://www.youtube.com/watch?v=nD7kuRxuL8Y&t=326s
+YouTubeRoman Brovko
+06 - Погружение в СУБД. Агрегатные и оконные функции
+
+и если какие-то конкретные вопросы появляются, можно задавать их в канале #вопросы-sql
+
+Ivan_K [8:59 PM]
+Отличная ссылка, мне очень помогла)
+Вопрос @Aleksandr Dzhumurat  можно задание 4.1 тоже сделать через обобщенные табличные выражения?
+
+Aleksandr Dzhumurat [9:04 PM]
+нет, нельзя. Цель домашки как раз в том, чтобы вы научились писать оба вида - и подзапросы, и СТЕ. По сути это взаимозаменяемые конструкции, но в рамках курса обязательно попробовате их обе
+
+Ivan_K [9:05 PM]
+Жаль, а так все хорошо получилось с помощью CTE)
+
+
+06.08.2018
+Aleksandr Dzhumurat [6:31 PM]
+А всем пришла ссылка на clickmeeting?
+
+
+08.08.2018
+Andrey Moskalev [8:18 AM]
+не взлетел Alpine Linux  так и не смог запустить вчера контейнер с ним
+
+```~/flask_docker_app/postgres_interactions$ sudo docker-compose --project-name postgres-client -f docker-compose.yml up --build -d
+Building postgres-client
+Step 1/4 : FROM alpine:edge
+ ---> 9d1f27787d39
+Step 2/4 : RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+ ---> Using cache
+ ---> 386b584f82b6
+Step 3/4 : RUN apk update && apk upgrade && apk --no-cache --update-cache add postgresql-client su-exec curl nano
+ ---> Running in e1319cbf69cd
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/community/x86_64/APKINDEX.tar.gz
+ERROR: http://dl-cdn.alpinelinux.org/alpine/edge/main: temporary error (try again later)
+WARNING: Ignoring APKINDEX.066df28d.tar.gz: No such file or directory
+ERROR: http://dl-cdn.alpinelinux.org/alpine/edge/community: temporary error (try again later)
+WARNING: Ignoring APKINDEX.b53994b4.tar.gz: No such file or directory
+fetch http://dl-8.alpinelinux.org/alpine/edge/community/x86_64/APKINDEX.tar.gz
+3 errors; 13 distinct packages available
+ERROR: http://dl-8.alpinelinux.org/alpine/edge/community: temporary error (try again later)
+WARNING: Ignoring APKINDEX.9600819b.tar.gz: No such file or directory
+ERROR: Service 'postgres-client' failed to build: The command '/bin/sh -c apk update && apk upgrade && apk --no-cache --update-cache add postgresql-client su-exec curl nano' returned a non-zero code: 3```
+
+причем в браузере эти адреса доступны и файлы там лежат, гугление пока не помогло, МОжет быть такое что например эта версия Alpine не совместима с 16.04? (edited)
+
+RuRM [9:30 AM]
+Всем привет.
+Делаю домашку 2, подпункт 1.2 - это там где надо одновременно сделать так чтобы imdbid на 42 заканчивалось, а movieid был в диапазоне от 100 до 1000.
+Как добавить/наложить одновременно несколько условий на запрос?
+Врозь у меня получилось:
+postgres=# SELECT * FROM links WHERE imdbid like '%42' LIMIT 10;
+postgres=# SELECT * FROM links WHERE movieid>100  LIMIT 10;
+postgres=# SELECT * FROM links WHERE movieid<1000  LIMIT 10;
+Например в matlab можно просто последовательно перечислить условия в скобках с оператором "&", догадываюсь что здесь должно быть что-то похожее ) (edited)
+
+RuRM [10:57 AM]
+насчет задания 4.2 (во второй домашке) не очень  понятно:
+я понимаю что с одной стороны мне нужно посчитать средние значения оценок всех пользователей, а с другой выбрать только тех у которых больше 10 оценок, но как это сделать разом в одном запросе? (edited)
+
+RuRM [10:59 AM]
+можно еще пример по CTE, а лучше парочку и попроще?
+
+Aleksandr Dzhumurat [12:24 PM]
+Все примеры есть в лекциях. На соответствующем слайде есть ссылка на туториал в github
+
+RuRM [12:25 PM]
+Я этот пример уже попробовал.
+Но не распробовал )
+Можно еще пример на туже тему например с таблицей links?
+
+Aleksandr Dzhumurat [12:48 PM]
+нет, других примеров не будет. Пример в лекции достаточно сложный, чтобы его можно было разложить на составные части и упростить самостоятельно - чтобы разобраться.
+
+09.08.2018
+Aleksandr Dzhumurat [9:38 AM]
+А отпишитесь пожалуста те, у кого нулевой опыт работы с Python. ФИнальное занятие курса называется "Python и базы данных" - я должен понимать средний уровень группы при составлении домашек
+
+RuRM [2:54 PM]
+пытаюсь выполнить задание по оконным ф-ям к третьей домашке:
+Почему мой запрос когда я пытаюсь вычислить метрику в лоб:
+SELECT userId, movieId,
+   ( rating - MIN(rating) ) / ( MAX(rating) - MIN(rating) ) OVER (PARTITION BY userId) as normed_rating
+   FROM (SELECT DISTINCT userId, movieId, rating FROM ratings WHERE userId <>1 LIMIT 1000) as sample
+   ORDER BY userId, rating DESC LIMIT 20;
+
+а такой похожий запрос но без скобок и деления на амплитуду проходит:
+SELECT userId, movieId,
+   rating - MIN(rating)  OVER (PARTITION BY userId) as normed_rating
+   FROM (SELECT DISTINCT userId, movieId, rating FROM ratings WHERE userId <>1 LIMIT 1000) as sample
+   ORDER BY userId, rating DESC LIMIT 20;
+
+подозреваю что дело в скобочках и группировке. (edited)
+
+Aleksandr Dzhumurat [2:54 PM]
+у каждого MIN и MAX должен быть свой OVER
+
+RuRM [3:07 PM]
+понял )
+теперь когда я выполняю вот так:
+SELECT userId, movieId,
+   (rating - MIN(rating)  OVER (PARTITION BY userId))/(Max(rating)  OVER (PARTITION BY userId) -MIN(rating)  OVER (PARTITION BY userId)) as normed_rating
+   FROM (SELECT DISTINCT userId, movieId, rating FROM ratings WHERE userId <>1 LIMIT 1000) as sample
+   ORDER BY userId, rating DESC LIMIT 20;
+выдает ошибку деление на ноль
+
+тогда я прибавил к знаменателю малое число и заработало
+SELECT userId, movieId,
+   (rating - MIN(rating)  OVER (PARTITION BY userId))/(0.000000000001+Max(rating)  OVER (PARTITION BY userId) -MIN(rating)  OVER (PARTITION BY userId)) as normed_rating
+   FROM (SELECT DISTINCT userId, movieId, rating FROM ratings WHERE userId <>1 LIMIT 1000) as sample
+   ORDER BY userId, rating DESC LIMIT 20;
+
+но наверное это не правильно и можно как то это сделать красиво?
+
+Arseny [3:25 PM]
+подскажите, пожалуйста, как выйти из Alpine Linux обратно в свой Linux после того как сдалал \q?
+
+RuRM [4:31 PM]
+продвигаюсь дальше по домашке 
+пытаюсь создать таблизу и залить в нее данные из keywords:
+echo "Загружаем keywords.csv..."
+psql --host $APP_POSTGRES_HOST -U postgres -c '
+ CREATE TABLE IF NOT EXISTS keywords (
+   id  bigint,
+   tags varchar(20)
+ );'
+
+psql --host $APP_POSTGRES_HOST  -U postgres -c \
+   "\\copy keywords FROM '/data/keywords.csv' DELIMITER ',' CSV HEADER"
+
+при попытке заполнения таблицы выдает ошибку:
+ERROR:  value too long for type character varying(20)
+CONTEXT:  COPY keywords, line 49, column tags: "[{'id': 1463, 'name': 'culture clash'}, {'id': 3591, 'name': 'settler'}, {'id': 3691, 'name': 'forbi..."
+Пробовал задавать tags vachar(50) и даже vachar(1000), не помогло - та же ошибка.
+
+RuRM [4:58 PM]
+В дом.задании в части Transform
+написано что в ЗАПРОСЕ1 будет 3 столбца:
+1 -- movieId
+2 -- avg_rating 
+а вот кто третий не понятно
+
+RuRM [5:18 PM]
+Почему то когда пытаюсь выполнить запросы по group by (он мне нужен для условия having)
+все время выдает ошибку,
+используй вторую колонку (у меня ratings.userid), она должна быть внутри group by. А как если я хочу сгруппировать по movieid?
+
+вот запрос:
+SELECT movieId, AVG(rating) OVER(PARTITION BY userId) as avg_rating
+   FROM (SELECT DISTINCT userId, movieId, rating FROM ratings group by  movieid having count(*)>50 LIMIT 100) as sample
+   ORDER BY userId, rating DESC LIMIT 30;
+
+а вот ошибка:
+ERROR:  column "ratings.userid" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 2:     FROM (SELECT DISTINCT userId, movieId, rating FROM ratin... (edited)
+
+mbadin [6:12 PM]
+Такой вопрос.
+А домашнее задание, которое будет сдано после 10го августа не принимается?
+
+Aleksandr Dzhumurat [6:13 PM]
+@Руслан, Координатор
+
+адель [6:20 PM]
+@mbadin 
+домашние задания нужно сдавать в срок, на домашку каждый раз будет по 10 дней. 
+если у вас есть уважительная причина, по которой вы ну никак не можете сделать ее вовремя, напишите мне в личку. будем решать, что делать в этом случае.
+
+но помните, если мы переносим дедлайн по домашке, то скорее всего вы не сможете быстро получить по ней фидбэк от препода!
+
+адель [6:21 PM]
+я, кстати, новый координатор вместо Руслана. по таким вопросом можно ко мне)
+
+mbadin [6:21 PM]
+да хорошо, спасибо за информацию)
+
+RuRM [7:21 PM]
+насчет примера из лекций по \copy
+
+он выдает следующую ошибку:
+postgres=# \copy (select * from ratings limit 100) to 'ratings_file' with header delimiter as ','
+ERROR:  COPY HEADER available only in CSV mode
+
+Victor Pimshin [7:26 PM]
+пытаюсь догнать группу, Docker поставил, что делать дальше - есть описание дальнейших шагов..?
+
+Aleksandr Kosolapov [7:28 PM]
+Как минимум посмотреть все прошлые вебинары (их пока три, там же рассказывают все  практические моменты для решения домашек)
+
+Victor Pimshin [7:39 PM]
+ок
+
+Sladkoejka [11:48 PM]
+cd flask_docker_app/postgres_interactions
+-bash: cd: flask_docker_app/postgres_interactions: No such file or directory
+Пытаюсь выполнить команду из настройки, но не получается перейти в папку
+
+
+
+10.08.2018
+Aleksandr Kosolapov [9:40 AM]
+@Aleksandr Dzhumurat в третьей домашке в задаче, где надо вытащить id и tags из keywords.csv мы должны придумать простой способ, используя delimiter или надо распарить каждую строку?
+
+MariA [6:37 PM]
+@Aleksandr Dzhumurat помогите разобраться, пожалуйста
+после успешного создания таблицы, начинаю заполнять её данными:
+postgres=# INSERT INTO persons VALUES(01, 'Андерсон, Уэс');
+"приглашающий" символ в постгре меняется на postgres'#  и дальше ничего не происходит или происходит, но не отображается на экране?
+приходится перезапускать виртуальную машину, останавливать и удалять контейнер и запускать всё с начала - и так после каждой ошибки :scream:
+
+Arseny [7:29 PM]
+с трудом подкрутил таблицу metadata c названиями фильмов. Лишние Enter'ы в ней
+
+Павел Воробьев [7:46 PM]
+Ребят, подскажите, пожалуйста, в каком формате вы прикладывали первую домашку. Текстовый файл с SQL запросом или со всеми командами в консоли или ещё как-то?
+
+Ivan_K [7:50 PM]
+Обычный txt
+с запросом и результатом
+
+Kirill [9:19 PM]
+@Aleksandr Dzhumurat в первом заднии hw4 "топ 5 самых больших таблиц", больших по кол-ву строк?
+
+Aleksandr Dzhumurat [9:20 PM]
+нет, по размеру в мегабайтах
+
+Kirill [9:23 PM]
+ок!
+
+
+11.08.2018
+Irina Belaya [7:07 PM]
+Коллеги, кто разобрался с третьей домашкой, как правильно заджойнить keywords? Первый запрос у меня получился SELECT movieId, AVG(rating) as avg_rating FROM ratings GROUP BY movieId HAVING COUNT(rating)>50 ORDER BY movieId, avg_rating DESC LIMIT 150.
+
+12.08.2018
+Irina Belaya [9:09 PM]
+Нет, 4я домашка 1 задание так быть не должно.
+
+Ivan_K [9:10 PM]
+Подскажите пожалуйста, топ5 размеров таблиц всех которые в БД или только тех которые я создал,
+
+13.08.2018
+Павел Воробьев [11:55 AM]
+Подскажите, пожалуйста, кто недалеко ушел от второй домашки. Как вложить файл hw1.sql так, чтобы он выполнялся по команде в консоли?
+
+Stratosferova [1:30 PM]
+@Aleksandr Dzhumurat а нет ли хороших примеров с хранимыми процедурами? У меня как-то некрасиво получается( вроде по отдельности ок вышло все и с intersect, и с unnest, а вот когда начинаю собирать - словно что-то упускаю. Вообще достаточно замороченная штука. Вроде и похоже на питон, но кажется есть какой-то секрет) Документацию читала
+
+Averin Alex [2:00 PM]
+не получается выложить исправленное дз в личном кабинете, не дает добавлять записи после преподавателя
+
+Kraas [2:04 PM]
+Так же не получается отправить 3-ю домашку на проверку, после подкрепления файла и отправки выводит: Задание не найдено
+
+Павел Воробьев [8:23 PM]
+Ребят, если у кого-то есть возможность - подскажите как вы заливали вторую домашку (sql код) на виртуалку. Желательно из тех, кто делал по инструкции, я пытаюсь делать через гугл клауд.
+Сам код для дз готов, нужно только впихнуть его как-то :slightly_smiling_face: лучше в личку наверн
+
+
+14.08.2018
+RuRM [8:02 AM]
+делаю 4 домашку задание про фунцию:
+Понятно что нужно пересечь два массива,
+если бы это был, например матлаб, взял бы и простым перебором с сортировкой выявил совпадения и результат сохранил как выходной массив.
+Но здесь скорее всего надо делать через INNER JOIN, а как работать с ним при условии, что аргумент не таблица а массив... не понятно.
+В лекциях (в записи занятий и в слайдах) этот момент прошли вскользь. (edited)
+
+Aleksandr Dzhumurat [8:05 AM]
+В файле hw4.sql всё по шагам расписано. В конце каждого пункта у вас будет маленький кусочек итогового решения, которые потом соберутся вместе. Лучше задавайте вопросы по конкретным пунктам.
+
+RuRM [8:11 AM]
+конкретно:
+после того как у меня появилась таблица user_movies_agg, такого вида:
+userid |                    user_views
+--------+---------------------------------------------------
+     1 | {31,1029,1061,1129,1172,1263,1287,1293,1339,1343}
+     2 | {10,17,39,47,50,52,62,110,144,150}
+     3 | {60,110,247,267,296,318,355,356,377,527}
+(3 rows)
+не могу создать функцию
+не понятно как осуществить сравнение
+через цикл и условие типа for и if - так мы вроде их не проходили
+через inner join - так не понятно как с ним работать когда аргумент массив (edited)
+
+Aleksandr Dzhumurat [8:18 AM]
+Тут не нужны никакие джойны или for) я в домашках не даю материал, которого нет в лекциях. Вот тут в п.3 по шагам рассказано, как создать функцию. Просто следуйте инструкции
+https://github.com/Dju999/flask_docker_app/blob/master/slides/hw4.md
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+gavril [12:33 PM]
+@Aleksandr Dzhumurat , Подскажите, пожалуйста, по 4 домашке. В самом конце получается результат вида  u1 | u2 |   diff_arr . Т.е. рекомендации 1ому человеку от 2ого, 1 от 3 ...1 от n. Оно так и должно быть? Или слить всё в массив? и нужно ли накладывать ограничение на то, что у них ничего общего нет между собой?
+
+Aleksandr Dzhumurat [12:36 PM]
+я бы слил всё в один массив - очень хорошо, что вы заметили. Т.к. в самом задании я нечётко написал, то первый вариант тоже считал правильным. По сути нужно ещё раз array_agg применить, или вызвать функцию для склеивания массивов. Но в целом можно и первый вариант отправить
+
+gavril [12:41 PM]
+ок, а по поводу общих фильмов? как мне представляется , если на cross_arr не наложим ограничений, мы порекомендуем вообще все фильмы ему
+
+Aleksandr Dzhumurat [12:43 PM]
+я бы вообще diff_arr вызывал только для пар, у которых хотя бы 4-5 общих фильмов в списке. ТАк в целом работают рекомендательные системы
+
+gavril [12:43 PM]
+Ок, спасибо
+
+Kirill [1:23 PM]
+@Aleksandr Dzhumurat  а где искать json фаил для 5-го задания?
+
+Aleksandr Dzhumurat [1:59 PM]
+https://github.com/Dju999/flask_docker_app/blob/master/mongo_interactions/src/agg.js
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+
+15.08.2018
+Sladkoejka [7:58 AM]
+Доброе утро, не получается выполнить подключиться к таблице.
+выгрузил все таблицы в папку data
+переключился на постграс, пытаюсь вызвать таблицу, ничего не выходит. Видимо в постграс нужно их ещё загрузить. Вылез из него ^D\q
+Как на видео ввожу sh/home/load_data.sh
+а она ругается.
+/bin/sh: sh/home/load_data.sh: not found
+
+Valeriya [4:44 PM]
+@Aleksandr Dzhumurat при запуске hw5 выдает такой результат
+2018-08-15T13:41:52.637+0000    connected to: mongo_host:27017
+2018-08-15T13:41:54.034+0000    imported 158680 documents
+MongoDB shell version v3.4.4
+connecting to: mongodb://mongo_host:27017/movies
+MongoDB server version: 4.0.1
+WARNING: shell and server versions do not match
+2018-08-15T13:41:54.100+0000 E QUERY    [thread1] SyntaxError: missing ; before statement @/home/agg.js:3:7
+failed to load: /home/agg.js
+
+16.08.2018
+Arseny [6:56 AM]
+Тоже завис на 4-ой домашке. Подскажите, пожалуйста, что не так с моей функцией 'CREATE OR REPLACE FUNCTION cross_arr (x int[], y int[]) RETURNS int[] as $$ select array_agg(vie) from (select unnest(x) as vie INTERSECT select unnest(y) as vie ) inters  $$ language sql;' ? При попытках ее вызова  'select cross_arr({3,7,9}, {1,2,7}) ;' или 'select cross_arr([3,7,9], [1,2,7]);' выдает ошибку >syntax error at or near "{"
+
+Arseny [7:01 AM]
+1) простые примеры создания функций работают 2) запрос похожий на тело функции отработал. 'select array_agg(vie) from (select unnest(UL.user_views) as vie from user_views UL where UL.userid=7 INTERSECT select unnest(UR.user_views) as vie from user_views UR where UR.userid=9) inters; '
+
+Aleksandr Dzhumurat [8:50 AM]
+А какая ошибка возникает?
+
+Ну то есть
+```cross_arr([3,7,9], [1,2,7]);' выдает ошибку >syntax error at or near "{```
+- такого быть не может, тут нет фигурных скобок (edited)
+
+RuRM [11:10 AM]
+пробую пока без функции создавать запросы.
+ни как не удается прикрутить array_agg (
+вообще поискал в инете и обнаружил, что обращение к array_agg всегда упоминается через select.
+
+вот пример создания мной массива через array_agg из домашки:
+postgres=# SELECT DISTINCT userID, array_agg(DISTINCT movieId) as user_views FROM ratings group by userid;
+он работает и обращение происходит через select.
+
+вот пример моего запроса на пересечение списков который тоже работает:
+postgres=# (SELECT UNNEST(array[2,3,4,5])) INTERSECT (SELECT UNNEST(array[1,3,5]));
+unnest
+--------
+    3
+    5
+(2 rows)
+
+но как только я пытаюсь добавить array_agg или select array_agg - не проходит - ругается на синтаксис:
+postgres=# array_agg( (SELECT UNNEST(array[2,3,4,5])) INTERSECT (SELECT UNNEST(array[1,3,5])) );
+
+ERROR:  syntax error at or near "array_agg"
+LINE 1: array_agg( (SELECT UNNEST(array[2,3,4,5])) INTERSECT (SELECT...
+
+postgres=# select array_agg( (SELECT UNNEST(array[2,3,4,5])) INTERSECT (SELECT UNNEST(array[1,3,5])) );
+
+ERROR:  syntax error at or near "INTERSECT"
+LINE 1: select array_agg( (SELECT UNNEST(array[2,3,4,5])) INTERSECT ...
+
+Alexey [11:54 AM]
+у меня вопрос - в пересечении два массива, а до этого я сделал таблицу с одним массивом- user_views, вопрос - какая таблица в роли второго массива, возможно я просто не вижу очевидной вещи
+
+Kirill [1:50 PM]
+@Aleksandr Dzhumurat  как сдавать 5-ое задание? скачать и отправить фаил agg.js?
+
+Vladislav Korotych [5:33 PM]
+при попытке прикрепить sql-файл пишет ошибку Недопустимое расширение или превышен допустимый размер файла.
+
+Stratosferova [5:33 PM]
+Вооще, четвертая домашка мне лично тяжеловато далась) Мне кажется, вот именно про функции стоило побольше рассказать что ли. Но это мои ощущения только
+
+Vladislav Korotych [5:35 PM]
+Функции - зверь редкий, ими обычно ДБА занимаются, а не аналитики
+
+Alexey Konstantinov [7:58 PM]
+Коллеги, подскажите пожалуйста. HW3 Запрос2
+#Запрос2
+#Теперь мы хотим добавить к выборке хороших фильмов с высоким рейтингов информацию о тегах.
+#Воспользуемся Common Table Expressions. Для этого нужно написать ЗАПРОС2, который присоединяет
+#к выборке таблицу keywords
+#WITH top_rated as ( ЗАПРОС1 ) ЗАПРОС2;
+sqldf('WITH
+top_rated as (
+SELECT movieId as movieIdTR , AVG(rating) as avg_rating
+FROM ratings
+     GROUP BY movieId HAVING COUNT(rating)>50
+     ORDER BY movieId, avg_rating DESC
+     LIMIT 150)
+Select movieIdTR, avg_rating, keywords.keywords
+FROM top_rated INNER JOIN  keywords
+On top_rated.movieIdTR = keywords.Id
+LIMIT 10')
+Выдает 1 значение, не привязывает к общему списку. Не пойму как исправить
+Пишу на R, небольшая специфика записи sqldf ('')
+movieId AVG(rating)     id
+1  111109    3.532442 111109
+Вот такую штуку выдает
+Запрос:
+sqldf('WITH
+top_rated as (
+SELECT movieId as movieIdTR , AVG(rating) as avg_rating
+FROM ratings
+     GROUP BY movieId HAVING COUNT(rating)>50
+     ORDER BY movieId, avg_rating DESC
+     LIMIT 150)
+Select movieIdTR, avg_rating, keywords
+FROM top_rated INNER JOIN  keywords
+On top_rated.movieIdTR = keywords.Id
+LIMIT 10')
+
+Ivan_K [8:05 PM]
+я бы убрал из первого запроса все что после COUNT(rating)>50 и перенес это после top_rated.movieIdTR = keywords.Id
+LIMIT 10 тоже предлогам убрать
+
+Alexey Konstantinov [8:10 PM]
+keywords.is = ratings.movieid?
+sqldf('WITH
++ top_rated as (
++ SELECT movieId as movieIdTR , AVG(rating) as avg_rating
++ FROM ratings
++       GROUP BY movieId HAVING COUNT(rating)>50)
++
++ Select movieIdTR, avg_rating, keywords
++ FROM top_rated LEFT JOIN  keywords
++ On top_rated.movieIdTR = keywords.Id
++ ORDER BY movieIdTR, avg_rating DESC
++       LIMIT 10')
+  movieIdTR avg_rating
+1          1   3.888157
+2          2   3.236953
+3          3   3.175550
+4          4   2.875713
+5          5   3.079565
+6          6   3.841764
+7          7   3.372105
+8          8   3.129191
+9          9   3.008365
+10        10   3.431841
+                                                                                                                                                                                                                                                                                                                                                      keywords
+1                                                                                                                                                                                                                                                                                                                                                          <NA>
+2                                                                                              [{'id': 240, 'name': 'underdog'}, {'id': 378, 'name': 'prison'}, {'id': 730, 'name': 'factory worker'}, {'id': 1563, 'name': 'prisoner'}, {'id': 1787, 'name': 'helsinki'}, {'id': 10183, 'name': 'independent film'}, {'id': 13072, 'name': 'falling in love'}]
+То есть он сначала делает первый запрос, а потом снизу накидывает теги
+причем куском
+Кстати, номер корректный вроде Тэгов
+Только не понятно почему он его снизу прикручивает
+
+Ivan_K [8:14 PM]
+а зачем left join
+
+Alexey Konstantinov [8:15 PM]
+Хочу к Запросу 1 прикрутить Keywords
+
+Ivan_K [8:16 PM]
+можно обычный join
+
+Alexey Konstantinov [8:17 PM]
+Убрал LEFT, ничего не поменялось
+
+Alexey Konstantinov [8:17 PM]
+movieIdTR avg_rating
+1         2   3.236953
+2         3   3.175550
+3         5   3.079565
+                                                                                                                                                                                                                                                                                                                                                     keywords
+1                                                                                             [{'id': 240, 'name': 'underdog'}, {'id': 378, 'name': 'prison'}, {'id': 730, 'name': 'factory worker'}, {'id': 1563, 'name': 'prisoner'}, {'id': 1787, 'name': 'helsinki'}, {'id': 10183, 'name': 'independent film'}, {'id': 13072, 'name': 'falling in love'}]
+2
+Что-то СТЕ никак не преодолею. Структура WITH cte_name(любое) (перечень любых названий столбцов, которые получу на выходе inner_query) AS (inner_query)
+В конкретном примере
+SELECT movieId as movieIdTR , AVG(rating) as avg_rating
+FROM ratings
+     GROUP BY movieId HAVING COUNT(rating)>50)
+Не пойму до конца как внешний и внутренний связать
+Запросы
+Внешний запрос:
+Select movieIdTR, avg_rating, keywords
+FROM top_rated JOIN  keywords
+On top_rated.movieIdTR = keywords.Id
+     LIMIT 3')
+
+Ivan_K [8:22 PM]
+они у вас отлично связываются запрос 1 идет во временную табл и потом вы выбираете из джойна временной с кейвордс
+
+Stratosferova [9:55 PM]
+У меня почему-то в наборе данных нет simple_tags.json - ну то есть есть вообще все остальные файлы, а этого почему-то нет. Где бы его взять?
+это я про последнюю домашку про mongo)
+
+Ivan_K [9:58 PM]
+@Stratosferova у меня тоже нет
+
+Stratosferova [9:58 PM]
+может, кто-то добрый поделиться им или ссылкой откуда надо скачать?
+
+Arseny [10:02 PM]
+Александр писал, что он в данных data.zip на Google drive
+
+Stratosferova [10:03 PM]
+блин, я видимо пропустила это(( я обычно вечером читаю или в обед, часто набегает много вопросов и ответов (edited)
+хм, только я работаю не на виртуалке гугловой, так что мне вообще это не с руки скачивать. Можно ссылку на этот несчастный файл или просто киньте его?
+
+Ivan_K [10:21 PM]
+@Stratosferova если вы завладеете этим файломНесчастным поделитесь пожалуйста со мной, я тоже не на виртуалке
+
+Kseniya Michailova [10:40 PM]
+@Stratosferova @Ivan_K Я тоже не на виртуалке и без файла, киньте файл пожалуйста и мне, если найдете
+
+Aleksandr Kosolapov [10:40 PM]
+@Kseniya Michailova @Stratosferova @Ivan_K держите ) (edited)
+JavaScript/JSON 
+simple_tags.json
+6 MB JavaScript/JSON
+
+
+Ivan_K [10:49 PM]
+Спасибо большое)
+
+Pavel Pronchenko [11:02 PM]
+Можно под любым линуксом, например Ubuntu выполнить команды из слайда с разворачиванием инстанса и все разворачивается и без виртуалки.
+
+17.08.2018
+Irina Belaya [10:49 AM]
+В 4 домашке после создания 2 массивов в одной таблице SELECT agg.userId as u1, agg.userId as u2, agg.user_views as ar1, agg.user_views as ar2 from user_movies_agg as agg CROSS JOIN user_movies_agg as agg2 при создании SELECT ARRAY(SELECT UNNEST (ar1[2,3,4,5]) INTERSECT (SELECT UNNEST (ar2[1,3,5]))); ERROR:  syntax error at or near [2,3 -в чем ошибка?
+
+Alexey [11:36 AM]
+в последнем пункте 4 домашки все считает, но в u1 выдает одинаковые значения несколько раз - эпытаюсь понять в функции ошибка или в запросе - WITH recs as (
+SELECT v.u1 as u1, v.cross_arr as ar1, m.user_views as ar2 FROM (SELECT cross_arr FROM common_user_views ORDER BY cross_arr DESC LIMIT 10) AS v CROSS JOIN user_movies_agg AS m
+) SELECT u1, diff_arr(ar1,ar2) FROM recs;
+
+Aleksandr Dzhumurat [11:44 AM]
+Забейте. Можно добавить ещё одну аггрегацию всех массивов рекомендаций для u1 в единый массив но для зачёта по домашке это не нужно
+
+Alexey Konstantinov [1:14 PM]
+IVAN K. - они у вас отлично связываются запрос 1 идет во временную табл и потом вы выбираете из джойна временной с кейвордс
+А почему запись в таком нелепом виде?
+
+RuRM [2:32 PM]
+по 5ой домашке
+пытаюсь поднять mongo:
+билд вроде бы прошел
+а вот когда пытаюсь подключиться к клиенту пишет что нет такого alpine-client
+
+sudo docker-compose --project-name mongo-client -f docker-compose.yml run --rm alpine-client
+[sudo] пароль для solovushka:
+ERROR: No such service: alpine-client (edited)
+
+Victor Pimshin [5:08 PM]
+может mango-client ?
+
+Igor Bezrukikh [9:02 PM]
+@Aleksandr Dzhumurat по хранимым процедурам SQL, есть толковый ресурс с примерами, где почитать можно?
+
+
+18.08.2018
+Kraas [1:34 AM]
+4 домашку залил ещё вчера вечером. До сих пор находится на проверке. Это её ещё просто не проверили или глюк какой то и перезалить надо?
+
+Sladkoejka [9:41 AM]
+А что делать, если не успел третью домашку сдать?
+
+
+19.08.2018
+Stratosferova [12:07 AM]
+Слушайте, тут лайфхак у кого мак. У меня mongo словно проклят был) Никак нормально контейнер не поднимается. набрала команду docker logs НОМЕР | tail - ошибка error creating journal dir /data/db/journal boost::filesystem::create_directory: No space left on device: “/data/db/journal”. Решила проблему так: ‘docker volume rm $(docker volume ls -qf dangling=true)’
+
+Stratosferova [12:08 AM]
+конечно, это к любому контейнеру относится
+@Aleksandr Dzhumurat можно добавить в описание, может кому будет полезно. Ошибка выглядит так: кажется, что контейнер поднялся, ошибок нет, но когда набираешь docker ps вот такая картина https://s.mail.ru/Ai2n/sArB78vot
+Облако@Mail.Ru
+Файл из Облака Mail.Ru
+Облако Mail.Ru - это ваше персональное надежное хранилище в интернете. Все нужные файлы всегда под рукой, доступны в любой точке мира с компьютера или смартфона.
+
+Andrey Moskalev [11:00 AM]
+Andrey Moskalev [10:39 AM]
+@адель Здравствуйте, на других курсах разрешаю до 3-х пропущенных домашек сдавать позже, открывая возможность загрузки? в этом курсе также? просьба открыть #3 номер для сдачи
+
+Irina Belaya [1:37 PM]
+По 5 домашке: контейнер поднялся, все работает, при попытке загрузки Json выдаёт синтаксическую ошибку
+
+Irina Belaya [1:38 PM]
+Image from iOS 
+
+20.08.2018
+RuRM [10:27 AM]
+по 5ой домашке:
+для того чтобы постичать теги их надо бы грузануть в базу для этого выполняю начало файла hw5.sh
+а именно загрузку базы
+/usr/bin/mongoimport --host $APP_MONGO_HOST --port $APP_MONGO_PORT --db movies --collection tags --file /data/simple_tags.json
+после загрузки файла simple_tags.json, почему то я не вижу новых загруженных данных
+команда db.stats () выдает:
+db.stats()
+{
+    "db" : "test",
+    "collections" : 0,
+    "views" : 0,
+    "objects" : 0,
+    "avgObjSize" : 0,
+    "dataSize" : 0,
+    "storageSize" : 0,
+    "numExtents" : 0,
+    "indexes" : 0,
+    "indexSize" : 0,
+    "fileSize" : 0,
+    "ok" : 1
+}
+
+RuRM [5:28 PM]
+пытаюсь сделать сортировку по запросу
+db.tags.aggregate([{$group: {_id: "$name",tgnum: { $sum: 1 }}}],{$sort:"_id.tgnum"});
+по результатам видно, что сортировка не происходит
+почему так?
+
+Stratosferova [7:34 PM]
+по поводу последней домашки, подскажите, плиз) я верно понимаю, что movies_top должна лежать тут load_data.sh? С этим файлом как раз надо работать просто. https://github.com/Dju999/flask_docker_app/blob/master/python_interactions/src/load_data.sh - а тут ничего нет( или где-то еще брать этот файл?
+GitHub
+Dju999/flask_docker_app
+flask_docker_app - Docker image with flask, redis, mongo and postgres
+
+Alexey [8:45 PM]
+немного отстал от группы - догоняю ускоренными темпами. при запуске монго (собралось и запустилось без пробелм) выдает ошибку:
+/ # /usr/bin/mongo -host $APP_MONGO_HOST -port $APP_MONGO_PORT
+MongoDB shell version v3.4.4
+connecting to: mongodb://mongo_host:27017/
+2018-08-20T17:43:00.308+0000 I NETWORK  [thread1] getaddrinfo("mongo_host") failed: Try again
+2018-08-20T17:43:00.358+0000 E QUERY    [thread1] Error: couldn't initialize connection to host mongo_host, address is invalid :
+connect@src/mongo/shell/mongo.js:237:13
+
+Alexey [8:45 PM]
+хотя в докерфайле все вроде в норме, скачивал последнюю версию
+
+Valeriya [10:10 PM]
+по поводу последней домашки, у меня нет файла  keywords.tsv. где его взять?
+Снимок экрана 2018-08-20 в 22.08.39.png 
+
+
+Kseniya Michailova [10:16 PM]
+В последней домашки при выполнении `class MoviesTop(Base):
+   __tablename__ = 'movies_top'
+
+   movieId = Column(Integer, primary_key=True)
+   ratings_num = Column(Float)
+   ratings_avg = Column(Float)` - происходит ошибка "sqlalchemy.exc.ArgumentError: Mapper Mapper|MoviesTop|movies_top could not assemble any primary key columns for mapped table 'movies_top". Не могу понять в чем ошибка, с кодом вроде все ок
+
+
+21.08.2018
+Stratosferova [12:03 PM]
+@Aleksandr Dzhumurat я вот хочу попробовать из jupiter поработать с бд, но не очень понимаю, ято в параметрах писать, ведь postgres в докере...Ну то есть если бы он где-то на сайте лежал, я бы сделала так: conn = psycopg2.connect(тут обращаемся к бд, можно это и в параметрах прописать, как в пример). А тут что делать? Может есть какая-то статья? Я что-то не могу найти примеров (edited)
+
+Roman Egorov [12:08 PM]
+Присоединяюсь к предыдущему посту, в финальном проекте указано, что мы БД и питон локально должны установить, а мы то в докере все собираем, поэтому работа с jupiter не очевидна.
+
+Aleksandr Dzhumurat [12:38 PM]
+@Stratosferova Прикол в том, что у Вас все контейнеры доступны с локальной машины по ip 0.0.0.0 и портам, которые у вас в docker-compose
+Untitled 
+params = {
+  "host": '0.0.0.0',
+  "port": '5433',
+  "user": 'postgres'
+}
+
+Stratosferova [12:38 PM]
+аааа! крутота! спасибо!)
+
+Aleksandr Dzhumurat [12:40 PM]
+Вот я в локальном ноутбучике подключился к своему же докер-контейнеру и выбрал какие-то данные из movies_top
+http://wwwscr.digitalaccess.ru/056_Selection.png
+http://wwwscr.digitalaccess.ru/056_Selection.png
+
+Kirill [12:46 PM]
+@Aleksandr Dzhumurat python не находит mongo, в чем может быть проблема?
+Снимок экрана 2018-08-20 в 19.26.41.png 
+
+
+Kirill [12:46 PM]
+Снимок экрана 2018-08-20 в 19.25.45.png 
+
+
+Arseny [1:04 PM]
+А кто знает как считаются баллы в нашей турнирной таблице? Я думал, 1 домашка=10 баллов. Ан нет. Первые две строчки по другому посчитаны  https://netology.ru/profile/program/sqlda-1/classmates
+netology.ru
+Нетология
+https://netology.ru/images/netology.png
+
+Anna Kirichenko [2:36 PM]
+У меня возникло непонимание 6ой домашки. То ли данных недостаточно, толи еще что. Подскажите пожалуйста. По пунктам:
+1) Собираем набор контейнеров Postgre, Mongo, Python
+2) В Postgre загружаются данные links.csv, ratings_small.csv, keywords.csv c помощью скрипта load_data.sh
+3) В Mongo загружаются данные с помощью скрипта pymongo_example.py (где определяется id тега и movieId отдельно)
+4) Мы выбираем необходимые фильмы, по которым нужно выбрать все теги связанные с фильмами
+5) отправляем эти movieId в mongo и смотрим какие теги с ними связаны. Так вот моя проблема: если я фильтрую по movieId, то у меня нет выходных данных, а если по id (как указано в примере hw6.py  {‘id’: {}} )- то данные есть.
+Это нормально? (edited)
+
+RuRM [5:37 PM]
+пытаюсь разобраться с 6ой домашкой, а именно sqlalchemy:
+к сожалению пересмотр записи с одновременным следованием за Александром Д. не сильно помог, т.к.
+мы не разобрали простейшие конструкции в этой библиотеке, ну например хочу я показать первые 5 элементов таблицы links
+в postgres: select * from links limit 5;
+в mongo: db.links.find({$limit: 5});
+в sqlalchemy: ???
+или как осуществить группировку внутри таблицы по полю, тоже непонятно.
+Ко всему прочему так и не удалось запустить пример из лекции - там какие-то ошибки.
+Я это все к чему:
+Чтобы сделать домашку надо разобраться и понять логику, чтобы понять логику надо научится выполнять простейшие команды в режиме сформировал запрос - посмотрел что вышло.
+Очень хочется сначала добить все домашки а только потом престуать к итоговой зачетной работе, но для этого нужны дополнительные пояснения по работе с библиотекой sqlalchemy.  а то получается что путем не растолковав сразу в "бой".
+
+Aleksandr Dzhumurat [5:55 PM]
+У меня в примерах вроде был пример про limit. За 2 ч можно получить только базовые примеры про psycopg, pymongo, sqlalchemy. В помощь примеры в репозитории - там все базовые операции рассмотрены
+
+RuRM [6:40 PM]
+Еще раз как мне выполнить домашку по sqlalchemy?
+Дорогие коллеги есть те кто разобрался может скините парочку простых примеров? (edited)
+
+Kirill [6:46 PM]
+@Aleksandr Dzhumurat в 6 задании в части mongo не могу найти фаил keywords.Tsv, в папке есть keywords.Csv - замена на него не помогает)
+
+Aleksandr Kosolapov [7:23 PM]
+Коллеги, в строке sql_str как обернули запрос чтобы создалась таблица? Без создания таблицы movies_top через INTO результат есть, но если указываем "SELECT * INTO public.movies_top FROM (SELECT movieid , count(rating) as ratings_num, avg(rating) as ratings_avg FROM public.ratings GROUP BY movieid) AS A" , то матерится. (edited)
+Снимок экрана 2018-08-21 в 19.17.47.png 
+
+
+Alexey Konstantinov [11:27 PM]
+Коллеги, а с Mongo можно без Docker работать? Все остальное делал, а в этой не пойму куда вводить команды на сайте MongoDB.com
+
+
+22.08.2018
+Irina Belaya [10:33 AM]
+В 6 домашке в Psycopg2 ratings_avg  почему-то не выводит цифрами, а True/False
+11.JPG 
+
+
+Irina Belaya [10:33 AM]
+И как правильно написать в Psycopg2 avg(rating)>3?
+
+Sladkoejka [11:54 AM]
+Коллеги, подскажите пожалуйста, в чём моя ошибка...
+В четвертой домашке пытаюсь создать функцию:
+CREATE OR REPLACE FUNCTION cross_arr (int[], int[]) RETURNS int[] language sql as $FUNCTION$ тело_функции ; $FUNCTION$;
+
+ок значит нужно внутри написать функцию которая разворачивает два массива и оставляет только совпадающие  не проблема
+
+написал запрос потренироваться, всё работает:
+select unnest(array[1,2,3,4,5]) intersect select unnest(array[1,6,7,4,5]);
+
+Теперь это нужно завернуть  в array_agg
+пытаюсь это сделать и ничего не получается(
+
+как мне кажется по логике запрос должен выглядеть примерно так:
+select array_agg(select unnest(array[1,2,3,4,5]) intersect select unnest(array[1,6,7,4,5]));
+что просто обернули в arrey_agg всё что было
+
+Мне выдаётся ошибка : syntax error at or near "select"
+ну ладно может быть select в создании функции не нужен.  Пишу
+
+CREATE OR REPLACE FUNCTION cross_arr (int[], int[]) RETURNS int[] language sql as $FUNCTION$ array_agg(select unnest($1) intersect select unnest($2)); $FUNCTION$;
+
+и новая ошибка : ERROR:  syntax error at or near "array_agg"
+в чём моя ошибка, уже третий день с этим бодаюсь( (edited)
+This message was deleted.
+
+Sladkoejka [6:04 PM]
+Коллеги, ещё вопрос по 4-й домашке...
+Не получается разобраться.
+
+нужно собрать таблицу которая была бы заджойнена сама на себя,  получаетс вот так.
+SELECT agg.userId as u1, agg.userId as u2, agg.array_agg as ar1, agg.array_agg as ar2 from user_movies_agg as agg CROSS JOIN user_movies_agg as agg2;
+
+в это случае постграс ругается что нужно группировать по полю userid
+column "agg.userid" must appear in the GROUP BY clause or be used in an aggregate function
+
+Ну ладно, сгруппирую...
+SELECT agg.userId as u1, agg.userId as u2, agg2.array_agg as ar1, agg2.array_agg as ar2 from user_movies_agg as agg CROSS JOIN user_movies_agg as agg2 group by agg.userid;
+
+Это если по примеру с другой стороны, в прошлой таблице я поля array_agg не создавал, наверно нужно вторым указывать поле user_views  ...
+
+тогда возможно запрос должен принять такой вид?
+
+SELECT agg.userId as u1, agg2.userId as u2, agg.user_views as ar1, agg2.user_views as ar2 from user_movies_agg as agg CROSS JOIN user_movies_agg as agg2 group by agg.userid,agg2.userid, agg.user_views,agg2.user_views
+
+Коллеги, вообще я зациклился, и у меня постоянно ошибки, может кто сможет просветить меня? :thinking_face:
+
+Grigoz [7:18 PM]
+у меня жестко не нравится весь код питону, не понимаю в чем проблема)
+Снимок экрана 2018-08-22 в 18.17.47.png 
+
+
+Pavel Pronchenko [7:42 PM]
+@Grigoz Мы обсуждали вчера эту проблему - решается заменой хоста подключения
+
+Aleksandr Kosolapov [9:56 PM]
+В 6-ом д/з надо создать запрос mongo_query, подскажите как вы указали там массив из tap_rated_content_ids?
+Снимок экрана 2018-08-22 в 21.53.31.png 
+
+
+Sladkoejka [11:20 PM]
+При попытке собрать образ монго выдается ошибка:
+f docker-compose.yml up --build -d
+Pulling mongo_host (mongo:latest)...
+latest: Pulling from library/mongo
+ERROR: no matching manifest for linux/amd64 in the manifest list entries (edited)
+
+
+
+23.08.2018
+Irina Belaya [12:13 AM]
+Про ошибку Mapper Mapper|MoviesTop|movies_top could not assemble any primary key columns for map ped table 'movies_top' уже выше писали, но, как ее устранить непонятно. Ввод engine = create_engine('postgresql://postgres:@{}:{}'.format(os.environ['APP_POSTGRES_HOST'], os.environ['APP_POSTGRES_PORT'])) не помогает / или я не понимаю, как правильно эту ошибку устранить
+
+24.08.2018
+Alexey [8:23 PM]
+делаю 6 домашку, начинаю проверять - выдает ошибку при запуске hw6.py при подключении к psycopg2 (edited)
+Pasted image at 2018-08-24, 8:22 PM 
+
+
+
+29.08.2018
+Arseny [10:18 PM]
+По 6-ой домашке кто разобрался как отлаживать sqlalchemy через командную строку? В командной строке почему-то код не работает (так было и на лекции). Видел выше совет от Ксении запускать файл hw6. Еще видел совет, кажется от Виктора, убрать лишние пропущенные строки. Почему Питон по разному воспринимает командную строку и файлы *.py?
+
+
+03.09.2018
+RuRM [2:58 PM]
+не очень понятно задание 3 во 2ой дом.работе:
+"Список поисковых запросов. Получить распределение количества слов в них. Т. е. поисковых запросов из одного слова 5%, из двух - 7%, из трех - 3% итд."
+Как это понять? Можно на примере каком нибудь?
+
+Arseny [4:58 PM]
+Соратники, можете прислать формулировку заданий 1-й и 2-й домашки по python? Я их сейчас не вижу в ЛК
+
+10.09.2018
+RuRM [8:46 AM]
+Доброе утро.
+Разбираю четвертую домашку по python
+В первом задании не очень понятно каков формат входных данных
+Было бы здорово если бы появился пример входных данных (хотя бы пара строчек) для той функции которую нужно в нем создать
+
+
+13.09.2018
+Vladislav Korotych [12:06 PM]
+не могу найти файл power.csv
+где его взять?
+нашел - в материалах к лекции был
+
+
+
+17.09.2018
+RuRM [4:33 PM]
+Добрый вечер
+Пытаюсь сделать домашку №6 там где надо доказать или опровергнуть, что "раньше фильмы были лучше"
+дошел до 6ого пункта 4ого задания и никак не могу сформировать запрос который бы применил мною написанную функцию ко всей таблице.
+Вот мой код для пунктов с 1 по 5:
+movies = pd.read_csv('movies.csv')
+def production_year(film_name):
+   years=[]
+   y=1950
+   while y<=2010:
+       years.append(y)
+       y=y+1
+   Years0=1900
+   for x in years:
+       buf=str(x)
+       if film_name.find(buf)>=0:
+           Years0=x
+           break
+   return Years0
+movies['year'] = 0
+Далее я пробовал действовать через for, но тогда комп вис на долго:
+for i in range(len(movies)):
+   movies['year'][i]=production_year(movies['title'][i],years)
+Подозреваю что можно как то применить написанную мной функцию "production_year" сказу ко всей таблице movies.
+Попробовал вот так:
+movies.filter(items = ['title']).agg('production_year')
+и так:
+movies.filter(items = ['title']).production_year()
+нефурычит
+помогите пожалуйста (edited)
+
+
+23.09.2018
+Arseny [2:11 AM]
+@Dima Muzalevskiy В домашке по линейной алгебре и оптимизации в задаче про ранг матрицы можно использовать встроенную в numpy функцию?
+
+Dima Muzalevskiy [2:11 AM]
+joined #домашние_задания by invitation from Arseny.
+
+Arseny [2:27 AM]
+@Dima Muzalevskiy в последней задаче в выражении min (x1x4(x1+x2+x3)+x3) ,как я понял, нужно добавить знак умножения между x1 и x4, а также перед второй открывающей скобкой. Верно? (edited)
+
+Dima Muzalevskiy [2:53 AM]
+Можно и не добавлять ;) такая запись подразумевает умножение, да :)
+
+Arseny [2:57 AM]
+@Dima Muzalevskiy спасибо! А в задаче про ранг матрицы можно использовать встроенную в numpy функцию?
+или нужно самому написать?
+
+Arseny [3:17 AM]
+еще вопрос, если позволите: "лучший алгоритм " - это какой? Который меньше итераций делает? На лекции наверное это было, но я не услышал (edited)
+
+Dima Muzalevskiy [3:24 AM]
+Ранг желательно самому прописать. Если не получится-тогда функцией
+Лучший с точки зрения точности. Итерации тоже важны, но они следом идут по важности.
+
+Arseny [4:07 AM]
+спасибо! исчерпывающие ответы
+
+Aieke [6:00 PM]
+Всем привет! Подскажите, пожалуйста, в задании 6 - первое задание: где взять файл keywords.csv, содержащий поисковой запрос?
+
+Aieke [6:55 PM]
+поняла, спасибо:)
+
+Arseny [7:41 PM]
+в задаче про оптимизацию не страшно, что начальная точка (1,5,5,1) лежит вне условий нахождения минимума, а именно "2≤x1,x2,x3,x4≤6" (все координаты больше двойки)?
+
+Vladislav Korotych [9:55 PM]
+а как устанавливать ограничения в оптимизации? в материалах этого нет, и в лекции я что-то не припомню
+
+Vladislav Korotych [9:56 PM]
+и материалы о 70 мегабайтах и ниочем - зачет, да
+и про оценку оптимальности алгоритмов тоже ничего нет
+а зачем городить велосипед для вычисления ранга - тоже непонятно. есть же нормальная функция в numpy
+негодую
+
+Vladislav Korotych [9:59 PM]
+и где взять якобиан для функции в задании - тоже хз
+
+Vladislav Korotych [10:00 PM]
+я вот вообще не в курсе, что это за зверь
+
+Dima Muzalevskiy [10:22 PM]
+Предполагается, что вы сами посмотрите как можно сделать с ограничениями, суть в принципе та же
+если не пишите сами ранг-можно использовать функцию, я писал об этом ранее
+про оценку оптимальности алгоритмов было сказано в лекции- наименьшая погрешность в определении точки, наименьшее количество итераций
+
+Vladislav Korotych [10:33 PM]
+оценивать погрешность можно относительно известного значения, как это было в примерах
+
+Dima Muzalevskiy [10:36 PM]
+не понимаю в чем проблема-прогоните несколько алгоритмов и сравните
+
+
+24.09.2018
+Vladislav Korotych [10:44 AM]
+А можно хоть какой-то пример с несколькими переменными (я так понимаю, что кортеж надо использовать) и ограничениями? Что использовать в качестве ограничений - bounds или constrain и как?
+
+Roman Egorov [10:44 AM]
+примеры были бы очень полезны
+
+
+25.09.2018
+Vladislav Korotych [10:03 AM]
+пример все еще необходим
+
+Vladislav Korotych [10:04 AM]
+и вообще, у функции optimize куча аргументов - хотелось бы знать, как их правильно использовать
+или хотя бы ссылку на что почитать, желательно на русском
+
+Dima Muzalevskiy [11:38 AM]
+https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html
+Scipy к сожалению на английском но там оч понятно написано про параметры
+
+Vladislav Korotych [11:47 AM]
+этот туториал требует математической подготовки, причем англоязчной, с моей рускоязычной подготовкой, которая была 20 лет назад - выглядит как китайская грамота
+я уже третий день на него медитирую без особых результатов
+
+Arseny [11:50 AM]
+По-моему, там из математики только производные
+
+Vladislav Korotych [11:52 AM]
+вот что такое fairly well-behaved function, например?
+раз уж на лекции нормально не разжевали, дайте хоть нормальный материал на русском для самостоятельного изучения
+
+Dima Muzalevskiy [12:23 PM]
+Владислав, к сожалению за два часа (за полтора даже если быть точным) не представляется полностью прочитать курс по мат оптимизации, который читается семестр в таком объёме который вы бы посчитали полным. При учете что перед занятием просили больше практики и самостоятельной работы (edited)
+Тема с ограничениями изначально практически не рассматривалась на занятии, для того, чтобы вы самостоятельно нашли информацию и выполнили задание. (edited)
+По данной теме в питоне оч сложно найти информацию по русски, по этому мне даже сложно вам что то посоветовать кроме разбора примеров которые можно понять и без знания языка, поскольку они сами себя объясняют
+https://www.scipy-lectures.org/advanced/mathematical_optimization/auto_examples/plot_constraints.html
+
+Vladislav Korotych [12:25 PM]
+Я понимаю, что все за занятие не расскажешь, поэтому и прошу дополнительных материалов. Мануал к нумпай я мог и без курсов почитать
+
+Dima Muzalevskiy [12:26 PM]
+https://stackoverflow.com/questions/19244527/scipy-optimize-how-to-restrict-argument-values
+Stack Overflow
+Scipy.optimize: how to restrict argument values
+I'm trying to use scipy.optimize functions to find a global minimum of a complicated function with several arguments. scipy.optimize.minimize seems to do the job best of all, namely, the 'Nelder-Me...
+
+Vladislav Korotych [12:28 PM]
+и гуглом по стековерфлоу я тоже владею
+
+Dima Muzalevskiy [12:28 PM]
+Ну с таким подходом можно любую книгу или видео без курсов прочитать. Идея в том что на курсах все собирается вместе и даётся для того чтобы было легче и понятно. По этому не понимаю вашего негативного подхода
+Можно почитать книгу Математика в техническом университете». Выпуск 14. Аттетков А.В., Галкин С.В., Зарубин B.C. Методы оптимизации
+Написано по русски и ответит на все ваши вопросы
+И не мануал по нампай и не стаковерфлоу
+
+Vladislav Korotych [12:42 PM]
+ну так строить обучение надо так, чтобы было понятно - теория, практика (конкретное простое задание, а не "поиграйтесь"), потом объяснение как из простых примеров создать что-то сложное и задание на закрепление
+
+Vladislav Korotych [12:42 PM]
+так был на предыдущих двух частях
+
+mbadin [12:52 PM]
+Если честно то по "поиграйтесь" мне тоже не понятно..
+Поиграться я тоже могу, и самостоятельно освоить курс data science тупо гугля тоже.
+Я записался на курсы в первую чтобы съекономить себе время, для того чтобы получить всю необходимую информацию тут. Да самообразование важно, и я сам считаю что оно должно быть как и саморазвитие в профессии, но например у меня время на нетологию ограничено 8 часами в неделю с учетом просмотра 2х лекций и 2х часов на домашку. Дополнительно время достаточно сложно выкроить, для того чтобы "играться".
+В качестве примера того, как на мой взгляд должен строиться процесс обучения - лекции Константина Башевого. Там и теория со всей необходимой информацией (и даже с заданиями на лекциях) и домашнее задание, которое закрепляет пройденный материал (причем с разными уровнями сложностями)
+
+Dima Muzalevskiy [1:10 PM]
+replied to a thread:
+Если честно то по "поиграйтесь" мне тоже не понятно..…
+Поиграться я тоже могу, и самостоятельно освоить курс data science тупо гугля тоже.…
+Я записался на курсы в первую чтобы съекономить себе время, для того чтобы получить всю необходимую информацию тут. Да самообразование важно, и я сам считаю что оно должно быть как и саморазвитие в профессии, но например у меня время на нетологию ограничено 8 часами в неделю с учетом просмотра 2х лекций и 2х часов на домашку. Дополнительно время достаточно сложно выкроить, для того чтобы "играться".…
+В качестве примера того, как на мой взгляд должен строиться процесс обучения - лекции Константина Башевого. Там и теория со всей необходимой информацией (и даже с заданиями на лекциях) и домашнее задание, которое закрепляет пройденный материал (причем с разными уровнями сложностями)
+О, Михаил, не видел вас на лекциях, вы были? Я то все думал почему вы до сих пор ничего не написали и не предложили по методологии и контенту :) Ну личное мнение это здорово. Вполне нормально что кому то больше нравится идти от простого к сложному, а кому то как раз нравится больше количество свободы и возможности самому покопаться, попробовать варианты и разобраться. Это как в случае, когда захотели меньше теории и больше практики, а потом наоборот больше теории и меньше практики) вполне нормально что возникают разные мнения, надо просто определиться что для большинства подходит. А сравнивать мат блок с курсом питона по меньшей мере некорректно, на мой взгляд, поскольку это абсолютно разные вещи с точки зрения и материала и подготовки и объяснения и практики. (edited)
+
+mbadin [1:52 PM]
+Нет, на Ваших лекциях меня не было, как и на большинстве остальных лекций, ровно как и на лабах. На мой взгляд, если есть возможность посмотреть лекции попозже, в то время когда будет удобно, то это даже лучше и этим надо пользоваться пока не началась офлайн часть.
+Однако отсутствие меня на лекций не мешает мне хорошо усваивать материал, и успешно выполнять ДЗ и держаться в первых строчках по балам студентов.
+По поводу отличия питона от математики, согласен есть различие, но прежде всего в предметной области а не способу подачи материала.
+Питон и SQL более похожи (по крайней мере в том контексте что курсы были об обработки и фильтрации данных), однако для того чтобы разобраться с sql для выполнения ДЗ мне пришлось просматривать аналогичный курс от Мейла и читать статьи на Хабре. Однако после прослушивания курса по Питону было все понятно и без доп лекций (с питоном, пандасом, нампаем до этого не работал).
+Понятно для того чтобы стать крутым специалистом по ДатаСаенсу нужно много читать и разбирать самостоятельно (ровно так же как и в любой специальности).
+Но задача курсов (на мой взгляд) для того чтобы дать нам необходимые теоретические и практические навыки, необходимые для трудоустройства на позицию джуна (в идеале).
+Опять же не холивара ради пишу, а к тому чтобы на лекциях давалось все необходимое как в теории так и в практики. (edited)
+
+27.09.2018
+gavril [6:06 PM]
+@Dima Muzalevskiy, Подскажите, пожалуйста, про третье задание домашки. Надо выбрать метод. Однако тут https://docs.scipy.org/doc/scipy-0.13.0/reference/generated/scipy.optimize.minimize.html#r97: Bounds for variables (only for L-BFGS-B, TNC and SLSQP), Constraints definition (only for COBYLA and SLSQP). Получается чтобы оба включить только SLSQP подходит
+
+Arseny [6:57 PM]
+У меня еще получилось метод "Cobyla" реализовать. Но там не поддерживаются ограничения в виде равенств (только неравенства). Из сферы x1^2+x2^2+x3^2+x4^2=60 пришлось сделать шаровой слой (edited)
+
+
+29.09.2018
+gavril [2:35 PM]
+а где посмотерть как такое сделать?
+
+Kirill [2:48 PM]
+@Dima Muzalevskiy в задачах "Визуализировать взаимосвязи между 3-4 переменными" и "Рассчитать t-test статистики для 3-4 переменных" нужно использовать 3-4 переменные одновременно или сравнивать по парам несколько разных?
+
+Dima Muzalevskiy [2:49 PM]
+По парам несколько разных
+
+Aieke [2:52 PM]
+@Dima Muzalevskiy чтобы использовать t-test переменные должны быть нормальными распределены?
+
+Dima Muzalevskiy [7:23 PM]
+Да, либо близкие к нему
+
+
+
+30.09.2018
+AlexM [4:47 PM]
+У меня одного перестали отображаться питоновские ноутбуки на github'е? (edited)
+
+Dima Muzalevskiy [4:59 PM]
+Их же майкрософт купили, поэтому такое будет иногда происходить))) (edited)
+
+Aieke [8:15 PM]
+@Dima Muzalevskiy Добрый вечер! Подскажите, пожалуйста, книжку про постановки задачи по оптимизации? Спасибо!
+
+Dima Muzalevskiy [10:50 PM]
+Можно здесь почитать http://bigor.bmstu.ru/?cnt/?doc=120_Opt/opt001.the
+
+Vladislav Korotych [10:51 PM]
+Я в упор не понимаю, как в оптимизацию добавлять эти долбанные ограничения
+особенно вида >=
+нахера я столько денег отдал, когда нормально объяснить не могут
+негодую
+курс математики был отвратителен
+
+Dima Muzalevskiy [10:53 PM]
+Владислав, идея была в том чтобы студенты сами выполнили задания на основе лекций и проблема пока только с вами наблюдается. Вы можете мне в личку написать давайте я с вами все по шагам разберу, если у вас это вызвало такие вопросы
+Но в любом случае, спасибо за ваше мнение о курсе, оно весьма ценно) Однако я думаю полезнее будет если вы это лично со мной обсудите иначе это все выглядит как демагогия, не помогающая решать задачи (edited)
+А вообще как сказал философ Боб Дилан: «Не стоит осуждать то, чего пока не понимаешь» :)
+
+Vladislav Korotych [10:56 PM]
+как надо и как не надо преподавать, я прекрасно понимаю, ибо год преподавал в институте
+
+Dima Muzalevskiy [10:57 PM]
+Ну год преподавания конечно делает в вас героя преподавательской работы))
+Жаль конечно что вам не понравилось, но насколько я понимаю, в основном все были довольны. В любом случае мы читаем в подобном формате первый раз и конечно не все всем будет нравиться.
+Вообщем Владислав, если вы хотите помощи в решениях задач-напишите мне в личку. Если целью ваших высказываний является демагогия, то ок я понял ваше мнение.
+
+Vladislav Korotych [11:01 PM]
+я не хочу, что бы кто-то делал за меня домашнюю работу, я хочу чтобы материал был подан так, чтобы я сам смог их сделать. как это было с предыдущими частями курса
+причем по питону у меня все домашние задания с отличием
+
+Dima Muzalevskiy [11:04 PM]
+При чем здесь питон? Окей, но почему то все сделали в итоге то задание с которым у вас трудности, хотя и использовали одни и те же материалы которые вы тоже видели. Вообщем не знаю чем вам помочь. Все ссылки на материалы вам дали, если вы хотите помощи пишите, я по шагам объясню и вы сделаете задание. Если хотите, можете не делать этот номер, если он вызывает такие сложности у вас.
+
+Vladislav Korotych [11:07 PM]
+по результатам курса я не приобрел навыков в нелинейной оптимизации, хотя они мне понадобятся позже. и это меня огорчает
+
+Dima Muzalevskiy [11:09 PM]
+Мы не можем за два часа пройти теорию оптимизации которую два семестра обычно дают в технических вузах. Я повторяю в очередной раз, если у вас есть какие либо вопросы. Либо они появляются. Вы мне пишите в личку и я вам отвечаю, как и другим студентам. По вопросам составления программы обращайтесь к кураторам курса.
+
+
+
+01.10.2018
+Anna Kirichenko [1:32 AM]
+По поводу оптимизации, и, я думаю, других подобных вопросов, что не хватило/не хватит лекций... Мне тоже, честно говоря, не хватило...( Но я не думаю что тут проблема в нашем ускоренном курсе - за два занятия врядли получится разобраться сразу в оптимизации, теории вероятности, статистике и прочем. Такие вещи очень долго и мучительно изучают в вузах, решают кучу задач, чтобы можно было понимать и применять методы на практике. Для этого нужно очень много самостоятельной работы( Тут скорее долны быть ссылки на проф. литературу и какие-нибудь задачники) Можно, например, к каждой лекции отдельным слайдом указывать список дополнительной литературы, как это обычно дают перед началом курса - мне такие вещи очень помогают (edited)
+Конкретно в тетрадках Jupyter Notebook этого курса не хватило описания выполняемых задач, какого-то структурного разделения с пояснениями - без лекций их не поймешь, хотя хотелось бы открыть и сразу получить примерное представление что мы будем делать на сегодняшнем занятии
+
+AlexM [3:21 AM]
+Раз тут приветствуется фидбек, то позвольте вставить свои 5 копеек.
+Хочется поделиться своим взглядом на возмущение коллеги по поводу отсутствия видимого и значимого результата по освоению материалов курса.
+
+ Курс по математике на таких  интенсивах всегда проходит сложно, особенно если это в сущности спец. курс математики.
+     Обычный человек не изучающий соответствующие разделы не владеет терменологическим аппаратом и устранение только этого требует достаточного времени.
+      В идеале, на мой взгляд, за то небольшое количество занятий, что выделены на этот подготовительный к освоению основной программы курс, необходимо дать информацию об основных и базовых понятиях, разьяснить используемый терменологический аппарат, какие цели и задачи решаются, какие основные методы для этого используются и подкрепить это некоторым количеством практики. Т.е. дать человеку  базис и указать вектора дальнейшего изучения.
+     Что же мы получили при прохождении этого курса? На мой взгляд примерно это самое и получили. Может быть не так четко структурированно, как хотелось бы и с недостаточным разьяснением практического применения, но мне видится причиной этому не достаточный опыт преподавателя в подаче информации в таком сжатом виде и по причиние недавнего включения курса по математике в подготовительную часть, непроработанные разьяснения и примеры практического приминения материала. Очень помогли бы, как указала @Anna Kirichenko, более полные и расширенные, с более подробными коментариями, ноутбуки с большим количество примеров практического применения материала.
+
+To @Vladislav Korotych
+    Прошу прощения, но:
+1. Я сам преподавал в вузе, и далеко не один год и могу с уверенностью сказать, что года преподавания недостаточно для того, что бы даже начать понимать, как нужно преподавать и как не нужно, так как за это время не успевает толком сформироваться обратная связь от достаточного количества слушателей, а контрольные посещения Ваших занятий другими, более опытными, преподавателями,  не дадут Вам достаточно информации об этом вопросе.
+2. Мнение о том, что так как  Вы заплатили деньги, и теперь *должно* обеспечиваться понимание и освоение Вами материала неверно. Вам за Вашу плату дается материал, инфраструктура для его освоения (под инфраструктурой понимаются задания, общение с преподавателем, контроль правильности исполнения практических заданий и т.д. ) и ссылки на литературу и др. источники информации для дальнейшего, самостоятельного изучения.
+     Поэтому, позвольте,  если угодно, такой совет: Перестаньте излишне возмущаться. Вас услышали и поняли не только преподаватели, но и слушатели, причем с первого раза. Засыпте преподавателя всеми своими вопросами по существу, что у вас возникли и добейтесь от преподавателя своего понимания по ним. Желательно в форме доступной для ознакомления другими слушателями.
+    Преподаватель всегда Вам по возможности ответит или хотя бы подскажет, где искать ответ. За такие действа Вам от всех слушателей, которые возможно еще даже и не подошли к пониманию существования заданных Вами вопросов, будет большая благодарность, респект и уважуха, за раскрытие глаз, просветительство и все такое.
+    Напишите развернутый отзыв о курсе, а то Ваше "все плохо" не слишком конструктивно.
+     Конечно жалко, что до начала нашего курса не было достаточно времени для  более четкой его проработки и  подготовки, но получения определенного количества знаний нельзя отрицать.
+
+З.Ы, Прошу прощения за "много букв". (edited)
+
+Vladislav Korotych [12:16 PM]
+Даже в рамках данного курса мне есть чем сравнивать. Часть по питону была просто отличная. А отговорки типа того, что математика сложнее питона и ее нельзя дать сжато - попахивает элитизмом. Напомню, что программистов тоже готовят в вузах по нескольку лет, как и математиков. В качестве примера, как правильно нужно подавать математику, могу посоветовать курс линейной алгебры от ВШЭ. Там отлично сделана подача материала - формулы перемежаются объяснениями "на пальцах", по середине лекции даются краткие вопросы на запоминание материала, а после лекции дз по теме, но так что надо сильно включать голову, гугл не поможет.
+
+AlexM [2:02 PM]
+Спасибо за ссылку на курс ВШЭ. Обязательно изучим и посмотрим.
+Однако прошу обратить внимание, что этот курс состоит 16  лекций в среднем по часу чистого времени. Лекции в количестве  16 шт. это класическое количество лекций отведенных на целый симместр, а мы с вами изучали математику экспрессом 2 недели.
+
+Vladislav Korotych [2:16 PM]
+всего там чуть менее 9 часов лекций, у нас было 8 часов, вполне сопоставимо
+
+Vladislav Korotych [2:16 PM]
+https://www.coursera.org/learn/algebra-lineynaya/home/welcome
+Coursera
+Coursera | Online Courses From Top Universities. Join for Free
+1000+ courses from schools like Stanford and Yale - no application required. Build career skills in data science, computer science, business, and more.
+http://s3.amazonaws.com/coursera/media/Coursera_Computer_Narrow.png
+
+Grigoz [4:08 PM]
+Смешно слышать, что за 8 часов вы что-то усвоили, я учился в ВШЭ на факультете МИЭФ, так вот за 4 года у нас два года шла статистика после нее эконометрика и на четвертом курсе кванты. Линал шел ровно полгода с лекцией каждую неделю, а вы тут требуете чтобы вам за две лекции рассказали как модель строить, статистику и линал))) Единтсвенные
+единственные претензии которые вы можете предъявить это то, что вам заранее перед курсом не достаточно четко рассказали какие знания требуются на начальном уровне для этого курса)
+
+
+
+
+02.10.2018
+Настя Дорожкина [7:41 PM]
+Пока я думаю, как помочь вам быстро выучить математику с нашей помощью, предлагаю и вам не расслабляться. Раньше ни математики, ни статистики, ни питона, ни SQL в курсе не было, и мы собрали ссылки на разные материалы для подготовки к курсу. Рекомендую этот док и вам. Если какие-то ссылки не работают, напишите мне - поправлю. https://docs.google.com/document/d/1NZEqxCDHgbvpiY9hj6AM7JYyp18beyB3hybXw9RXmaQ/edit#heading=h.qylhvocfovuy (edited)
+GDocs Document 
+Еще чуть-чуть и ты Data Scientist
+Document from Google Drive
+
+
+Pavel Pronchenko [8:23 PM]
+может кому будет полезно
+PDF 
+Pandas_Cheat_Sheet.pdf
+175 kB PDF
+
+
+05.10.2018
+RuRM [2:27 PM]
+Вопрос по проектной работе:
+"Задание 6. Рассчитать сколько работников работает в каждом департаменте"
+А какой из столбцов соответствует числу работников или может быть каждая строчка - это отдельный уникальный работник? Необходимо пояснить. (edited)
+
+Dima Muzalevskiy [2:47 PM]
+ответил  в проверочных
+
+
+06.10.2018
+Arseny [9:50 PM]
+Хан - красавчик! Хорошо про критерии статистики разжевал. https://www.youtube.com/watch?v=-FtlH4svqx4
+YouTubeKhan Academy
+Hypothesis testing and p-values | Inferential statistics | Probability and Statistics | Khan Academy
+
+
+
+10.10.2018
+AlexM [9:38 AM]
+Забавно, что в противовес занятиям, дома "plotly" встала без каких либо проблем через pip. (edited)
+Message Input
+
+
+Message #домашние_задания
