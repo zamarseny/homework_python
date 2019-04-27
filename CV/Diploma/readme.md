@@ -62,3 +62,7 @@ III. ТЕСТИРОВАНИЕ (20% done)
     20) запустить скрипт надолго
     
     21) (1) ускоренное воспроизведение перемещения чела по магазину
+    
+Мысли по поводу метрики качества описаны здесь: 
+
+https://github.com/zamarseny/homework_python/blob/master/CV/Diploma/metrics/tracking%20metrics.ipynb
